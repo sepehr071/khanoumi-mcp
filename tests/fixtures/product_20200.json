@@ -1,0 +1,272 @@
+{
+ "isSuccess": true,
+ "data": {
+  "id": "20200",
+  "slug": "cerita-anti-hair-loss-fortifying-shampoo-with-caffeine-20200",
+  "nameFa": "شامپو تقویت کننده و ضد ریزش کافئین",
+  "nameEn": "Cerita Anti Hair Loss Fortifying Shampoo With Caffeine",
+  "isPublished": true,
+  "isDiscontinued": false,
+  "isSalable": true,
+  "basePrice": 555000,
+  "salesPrice": 469090,
+  "discountPrice": 85910,
+  "discountPercent": 15,
+  "rate": 4.9,
+  "ratesCount": 248,
+  "commentsCount": 212,
+  "addedToWishListCount": 1998,
+  "mainImageUrl": "https://storage.khanoumi.com/ProductImages/20200-2025414161322521.jpg",
+  "pageTitle": "شامپو کافئین سریتا ضدریزش و تقویت کننده مو مناسب انواع مو",
+  "pageH1": "شامپو ضد ریزش و تقویت کننده سریتا حاوی کافئین مناسب موهای چرب و معمولی حجم 200 میلی لیتر",
+  "flags": "",
+  "brand": {
+   "id": 2412,
+   "nameFa": "سریتا",
+   "nameEn": "cerita",
+   "slug": "cerita",
+   "consideration": "این کالا به صورت بی‌واسطه از کارخانه تولیدی در ایران تامین شده و اصالت آن توسط خانومی تایید می‌شود."
+  },
+  "breadcrumb": [
+   {
+    "level": 1,
+    "id": "58",
+    "slug": "hair",
+    "nameFa": "مراقبت و زیبایی مو",
+    "nameEn": "hair"
+   },
+   {
+    "level": 2,
+    "id": "60",
+    "slug": "shampoo",
+    "nameFa": "شامپو",
+    "nameEn": "shampoo"
+   },
+   {
+    "level": 3,
+    "id": "563",
+    "slug": "anti-hair-fall-shampoos",
+    "nameFa": "شامپو ضد ریزش و تقویت کننده",
+    "nameEn": "anti-hair-fall-shampoos"
+   }
+  ],
+  "breadcrumbBrandCategory": null,
+  "weight": {
+   "value": 200,
+   "unit": "ml",
+   "packageWeight": 240
+  },
+  "images": [
+   {
+    "id": "116522",
+    "imageUrl": "https://storage.khanoumi.com/ProductImages/20200_feature.jpeg"
+   }
+  ],
+  "videos": [],
+  "variants": [
+   {
+    "id": "506000519",
+    "itemProposalId": "LOT1155679_d8df9c0baaed405d93a2bc5e9cbf9244_4690900",
+    "color": null,
+    "weight": {
+     "value": 200,
+     "unit": "ml",
+     "packageWeight": 240
+    },
+    "isSalable": true,
+    "basePrice": 555000,
+    "salesPrice": 469090,
+    "discountPrice": 85910,
+    "discountPercent": 15,
+    "limit": 3,
+    "leadTime": 0,
+    "giftVariantNameFa": null,
+    "flags": "None",
+    "vendorDisplayName": null,
+    "shipBySeller": false,
+    "goldBasePrice": null
+   }
+  ],
+  "attributes": [
+   {
+    "id": 7,
+    "nameFa": "بافت محصول",
+    "nameEn": "product-texture",
+    "values": [
+     {
+      "id": 224,
+      "nameFa": "کرم",
+      "nameEn": "cream"
+     }
+    ]
+   },
+   {
+    "id": 11,
+    "nameFa": "ترکیبات کلیدی",
+    "nameEn": "key-ingredients",
+    "values": [
+     {
+      "id": 274,
+      "nameFa": "پانتنول",
+      "nameEn": "panthenol"
+     },
+     {
+      "id": 278,
+      "nameFa": "ویتامین E",
+      "nameEn": "vitamin-e"
+     },
+     {
+      "id": 297,
+      "nameFa": "ویتامین های گروه B",
+      "nameEn": "b-vitamins"
+     },
+     {
+      "id": 320,
+      "nameFa": "کافئین",
+      "nameEn": "caffeine"
+     },
+     {
+      "id": 339,
+      "nameFa": "رزماری",
+      "nameEn": "rosemary"
+     },
+     {
+      "id": 442,
+      "nameFa": "نخل اره ای (ساو پالمتو)",
+      "nameEn": "saw-palmetto"
+     }
+    ]
+   },
+   {
+    "id": 34,
+    "nameFa": "نوع مو",
+    "nameEn": "hair-type",
+    "values": [
+     {
+      "id": 689,
+      "nameFa": "انواع مو",
+      "nameEn": "hair-types"
+     }
+    ]
+   },
+   {
+    "id": 36,
+    "nameFa": "نیاز به آبکشی",
+    "nameEn": "requires-rinsing",
+    "values": [
+     {
+      "id": 714,
+      "nameFa": "دارد",
+      "nameEn": "yes"
+     }
+    ]
+   },
+   {
+    "id": 44,
+    "nameFa": "جنسیت",
+    "nameEn": "gender",
+    "values": [
+     {
+      "id": 744,
+      "nameFa": "بانوان و آقایان",
+      "nameEn": "men-and-women"
+     }
+    ]
+   },
+   {
+    "id": 52,
+    "nameFa": "مرحله استفاده",
+    "nameEn": "usage-stage",
+    "values": [
+     {
+      "id": 790,
+      "nameFa": "در حمام",
+      "nameEn": "in-shower"
+     }
+    ]
+   },
+   {
+    "id": 53,
+    "nameFa": "ویژگی محصول",
+    "nameEn": "product-feature",
+    "values": [
+     {
+      "id": 812,
+      "nameFa": "آبرسان",
+      "nameEn": "hydrating"
+     },
+     {
+      "id": 815,
+      "nameFa": "مغذی",
+      "nameEn": "nourishing"
+     },
+     {
+      "id": 817,
+      "nameFa": "تقویت کننده",
+      "nameEn": "strengthening"
+     },
+     {
+      "id": 818,
+      "nameFa": "آنتی اکسیدان",
+      "nameEn": "antioxidant"
+     },
+     {
+      "id": 894,
+      "nameFa": "ضدریزش",
+      "nameEn": "anti-hair-loss"
+     },
+     {
+      "id": 898,
+      "nameFa": "کنترل کننده چربی",
+      "nameEn": "oil-control"
+     },
+     {
+      "id": 899,
+      "nameFa": "درخشان کننده",
+      "nameEn": "shine-enhancing"
+     },
+     {
+      "id": 904,
+      "nameFa": "کمک به رشد مو",
+      "nameEn": "hair-growth-support"
+     },
+     {
+      "id": 905,
+      "nameFa": "ضخیم کننده تار مو",
+      "nameEn": "hair-strand-thickening"
+     }
+    ]
+   },
+   {
+    "id": 62,
+    "nameFa": "نوع بسته بندی",
+    "nameEn": "packaging-type",
+    "values": [
+     {
+      "id": 1498,
+      "nameFa": "بطری",
+      "nameEn": "bottle"
+     }
+    ]
+   },
+   {
+    "id": 64,
+    "nameFa": "کشور سازنده",
+    "nameEn": "country-of-manufacture",
+    "values": [
+     {
+      "id": 1530,
+      "nameFa": "ایران",
+      "nameEn": "iran"
+     }
+    ]
+   }
+  ],
+  "descriptionMarkdown": null,
+  "howToUseMarkdown": null,
+  "descriptionMeta": "خرید اینترنتی شامپو ضد ریزش و تقویت کننده سریتا حاوی کافئین مناسب موهای چرب و معمولی حجم 200 میلی لیتر با تضمین اصالت کالا و تخفیف ویژه از فروشگاه اینترنتی آرایشی و بهداشتی خانومی",
+  "descriptionHtmlEn": null,
+  "descriptionHtmlFa": "<p style=\"text-align: right;\"><strong>نوع</strong><strong>:</strong> شامپو ضد ریزش و تقویت کننده</p>\r\n<p style=\"text-align: right;\"><strong>جنسیت: </strong>زنانه و مردانه</p>\r\n<p style=\"text-align: right;\"><strong>رده سنی:</strong> بزرگسال</p>\r\n<p style=\"text-align: right;\"><strong>مناسب:</strong> استفاده روزانه</p>\r\n<p style=\"text-align: right;\"><strong>بافت:</strong> سبک و بدون احساس سنگینی</p>\r\n<p style=\"text-align: right;\"><strong>حجم:</strong> 200 میلی لیتر</p>\r\n<p style=\"text-align: right;\"><strong>مناسب برای: </strong>موهای چرب و معمولی</p>\r\n<p style=\"text-align: right;\"><strong>ماده موثر:</strong> کافئین،عصاره رزماری</p>\r\n<p style=\"text-align: right;\"><strong>سایر ویژگی&zwnj;ها:</strong> کمک به کاهش ریزش، حمایت از ریشه، افزایش قطر تار مو، حفظ رطوبت، درخشش طبیعی</p>\r\n<p style=\"text-align: right;\"><strong>برند</strong><strong>:</strong> سریتا</p>\r\n<p style=\"text-align: right;\"><strong>مبدا برند: </strong>ایران</p>\r\n<p style=\"text-align: right;\"><strong>کشور سازنده:</strong> ایران</p>",
+  "howToUseHtml": "<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; موها را با آب ولرم خیس کنید.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; مقدار لازم شامپو را به کف دست بزنید.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; روی پوست سر و طول مو پخش کنید.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; کف را روی پوست سر به آرامی فید کنید.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 تا 5 دقیقه صبر کنید.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; خوب آبکشی کنید.</p>\r\n<p style=\"text-align: right;\">&nbsp;</p>\r\n<h2 style=\"text-align: right;\"><strong>هشدار&nbsp;مصرف:</strong></h2>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; از تماس با چشم پرهیز شود.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; روی پوست ملتهب یا زخم دار استفاده نشود.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; در صورت بروز حساسیت، استفاده را متوقف کنید.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; دور از دسترس کودکان نگهداری شود.</p>\r\n<p style=\"text-align: right;\">&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; در جای خشک و خنک و دور از نور مستقیم آفتاب نگهداری شود.&nbsp;</p>"
+ }
+}

@@ -1,0 +1,701 @@
+{
+ "isSuccess": true,
+ "data": {
+  "queryId": "2A59184E7ED7BB30",
+  "sort": "Cheapest",
+  "products": {
+   "totalCount": 551,
+   "pageNumber": 1,
+   "pageSize": 16,
+   "items": [
+    {
+     "id": "86308",
+     "nameFa": "کرم مرطوب کننده تیوپی مدل ElderBerry مناسب پوست چرب حجم 100 میلی لیتر",
+     "nameEn": "Paletta ElderBerry Tupe Hydration Cream 100 ml",
+     "hasStock": true,
+     "slug": "paletta-elderberry-tupe-hydration-cream-100-ml-86308",
+     "imageUrl": "https://storage.khanoumi.com/ProductImages/86308-202531016255748.jpg",
+     "basePrice": 109000,
+     "brand": {
+      "id": 0,
+      "nameFa": "پالتا",
+      "nameEn": "Paletta",
+      "slug": "paletta",
+      "consideration": null
+     },
+     "flags": "",
+     "discountPrice": 44000,
+     "discountPercent": 40,
+     "effectivePrice": 65000,
+     "colorsCount": 1,
+     "isSalable": true,
+     "ad": null,
+     "breadcrumb": []
+    },
+    {
+     "id": "111068",
+     "nameFa": "کرم مرطوب کننده دست و صورت مناسب پوست های خشک و دهیدراته حجم 75 میلی لیتر",
+     "nameEn": "Canella Max Hand And Face Moisturizing Cream For Dry And Dehydrating Skin 75 ml",
+     "hasStock": true,
+     "slug": "canella-max-hand-and-face-moisturizing-cream-for-dry-and-dehydrating-skin-75-ml-111068",
+     "imageUrl": "https://storage.khanoumi.com/ProductImages/00704998-202621415572781.jpg",
+     "basePrice": 650000,
+     "brand": {
+      "id": 4758,
+      "nameFa": "کنلامکس",
+      "nameEn": "Canella Max",
+      "slug": "canellamax",
+      "consideration": null
+     },
+     "flags": "",
+     "discountPrice": 180000,
+     "discountPercent": 28,
+     "effectivePrice": 470000,
+     "colorsCount": 1,
+     "isSalable": true,
+     "ad": {
+      "bidId": "0f0fb11f-a50c-4b29-b52c-aee7e6846074",
+      "vendorId": "3225",
+      "index": 2
+     },
+     "breadcrumb": []
+    },
+    {
+     "id": "86300",
+     "nameFa": "کرم مرطوب کننده تیوپی مدل Ginkgo مناسب پوست خشک و خیلی خشک حجم 100 میلی لیتر",
+     "nameEn": "Paletta Ginkgo Tupe Hydration Cream For Dry Skin 100 ml",
+     "hasStock": true,
+     "slug": "paletta-ginkgo-tupe-hydration-cream-100-ml-86300",
+     "imageUrl": "https://storage.khanoumi.com/ProductImages/86300-202531016245367.jpg",
+     "basePrice": 109000,
+     "brand": {
+      "id": 0,
+      "nameFa": "پالتا",
+      "nameEn": "Paletta",
+      "slug": "paletta",
+      "consideration": null
+     },
+     "flags": "",
+     "discountPrice": 44000,
+     "discountPercent": 40,
+     "effectivePrice": 65000,
+     "colorsCount": 1,
+     "isSalable": true,
+     "ad": null,
+     "breadcrumb": []
+    },
+    {
+     "id": "34869",
+     "nameFa": "کرم مرطوب کننده تیوپی حاوی شی باتر 75میل",
+     "nameEn": "Top Shop Shea Butter Moisturizing Cream 75ml",
+     "hasStock": true,
+     "slug": "top-shop-shea-butter-moisturizing-cream-75ml-34869",
+     "imageUrl": "https://storage.khanoumi.com/ProductImages/799da27cf7ff44b888cb2959ee4b6652.jpg",
+     "basePrice": 83500,
+     "brand": {
+      "id": 0,
+      "nameFa": "تاپ شاپ",
+      "nameEn": "Top Shop",
+      "slug": "top-shop",
+      "consideration": null
+     },
+     "flags": "",
+     "discountPrice": 9280,
+     "discountPercent": 11,
+     "effectivePrice": 74220,
+     "colorsCount": 1,
+     "isSalable": true,
+     "ad": null,
+     "breadcrumb": []
+    },
+    {
+     "id": "103592",
+     "nameFa": "کرم آبرسان و مرطوب کننده حاوی ژل رویال مناسب پوست خشک و حساس حجم 50 میلی لیتر",
+     "nameEn": "Aqua Plus Royal Jelly Hydrating Cream 50ML",
+     "hasStock": true,
+     "slug": "aqua-plus-royal-jelly-hydrating-cream-50ml-103592",
+     "imageUrl": "https://storage.khanoumi.com/ProductImages/3D-20251028212738405.jpg",
+     "basePrice": 135000,
+     "brand": {
+      "id": 0,
+      "nameFa": "آکوا پلاس",
+      "nameEn": "Aqua Plus",
+      "slug": "aqua-plus",
+      "consideration": null
+     },
+     "flags": "",
+     "discountPrice": 23620,
+     "discountPercent": 17,
+     "effectivePrice": 111380,
+     "colorsCount": 1,
+     "isSalable": true,
+     "ad": null,
+     "breadcrumb": []
+    },
+    {
+     "id": "58983",
+     "nameFa": "کرم مرطوب کننده حاوی آلانتوئین 75میل",
+     "nameEn": "Top Shop Moisturising Cream Allantoin 75ml",
+     "hasStock": true,
+     "slug": "top-shop-moisturising-cream-allantoin-75ml-58983",
+     "imageUrl": "https://storage.khanoumi.com/ProductImages/2-20262812330371.jpg",
+     "basePrice": 144200,
+     "brand": {
+      "id": 0,
+      "nameFa": "تاپ شاپ",
+      "nameEn": "Top Shop",
+      "slug": "top-shop",
+      "consideration": null
+     },
+     "flags": "",
+     "discountPrice": 26710,
+     "discountPercent": 19,
+     "effectivePrice": 117490,
+     "colorsCount": 1,
+     "isSalable": true,
+     "ad": null,
+     "breadcrumb": []
+    },
+    {
+     "id": "111067",
+     "nameFa": "کرم مرطوب کننده دست و صورت مناسب پوست های چرب و مختلط حجم 75 میلی لیتر",
+     "nameEn": "Canella Max Hand And Face Moisturizing Cream For Oily And Combination Skin 75 ml",
+     "hasStock": true,
+     "slug": "canella-max-hand-and-face-moisturizing-cream-for-oily-and-combination-skin-75-ml-111067",
+     "imageUrl": "https://storage.khanoumi.com/ProductImages/00704993-2026214155546655.jpg",
+     "basePrice": 520000,
+     "brand": {
+      "id": 4758,
+      "nameFa": "کنلامکس",
+      "nameEn": "Canella Max",
+      "slug": "canellamax",
+      "consideration": null
+     },
+     "flags": "",
+     "discountPrice": 140000,
+     "discountPercent": 27,
+     "effectivePrice": 380000,
+     "colorsCount": 1,
+     "isSalable": true,
+     "ad": {
+      "bidId": "9bc278cd-d9c5-4b68-a9cf-1bde8e814491",
+      "vendorId": "3225",
+      "index": 7
+     },
+     "breadcrumb": []
+    },
+    {
+     "id": "73639",
+     "nameFa": "کرم مرطوب کننده حاوی شی باتر و ماکادمیا مناسب پوست خیلی خشک",
+     "nameEn": "Handology Face And Hand Beauty Cream For Very Dry Skin",
+     "hasStock": true,
+     "slug": "handology-face-and-hand-beauty-cream-for-very-dry-skin-73639",
+     "imageUrl": "https://storage.khanoumi.com/ProductImages/Handology-Face-And-Hand-Beauty-Cream-For-Very-Dry-Skin-Khanoumi-2023530172357916.jpg",
+     "basePrice": 200000,
+     "brand": {
+      "id": 0,
+      "nameFa": "هندولوژی",
+      "nameEn": "Handology",
+      "slug": "handology",
+      "consideration": null
+     },
+     "flags": "Chance",
+     "discountPrice": 80000,
+     "discountPercent": 40,
+     "effectivePrice": 120000,
+     "colorsCount": 1,
+     "isSalable": true,
+     "ad": null,
+     "breadcrumb": []
+    }
+   ]
+  },
+  "facets": {
+   "colorFacets": [
+    {
+     "imageUrl": "https://storage.khanoumi.com/ColorImages/بژ،کرم-2023923115824549.png",
+     "count": 32,
+     "isSelected": false,
+     "displayNameFa": "کرم ، بژ",
+     "displayNameEn": null,
+     "key": "17"
+    }
+   ],
+   "brandFacets": [
+    {
+     "count": 24,
+     "isSelected": false,
+     "displayNameFa": "کامان",
+     "displayNameEn": "comeon",
+     "key": "comeon"
+    },
+    {
+     "count": 24,
+     "isSelected": false,
+     "displayNameFa": "آردن",
+     "displayNameEn": "ardene",
+     "key": "ardene"
+    },
+    {
+     "count": 19,
+     "isSelected": false,
+     "displayNameFa": "آر یو اکی",
+     "displayNameEn": "are.u.ok",
+     "key": "areuok"
+    },
+    {
+     "count": 15,
+     "isSelected": false,
+     "displayNameFa": "درمالیفت",
+     "displayNameEn": "Dermalift",
+     "key": "dermalift"
+    },
+    {
+     "count": 14,
+     "isSelected": false,
+     "displayNameFa": "دیپ سنس",
+     "displayNameEn": "Deep Sense",
+     "key": "deep-sense"
+    },
+    {
+     "count": 13,
+     "isSelected": false,
+     "displayNameFa": "اوک شاین",
+     "displayNameEn": "Oveq Shine",
+     "key": "oveq-shine"
+    },
+    {
+     "count": 12,
+     "isSelected": false,
+     "displayNameFa": "رین استایل",
+     "displayNameEn": "Rain Style",
+     "key": "rain-style"
+    },
+    {
+     "count": 11,
+     "isSelected": false,
+     "displayNameFa": "هندولوژی",
+     "displayNameEn": "Handology",
+     "key": "handology"
+    },
+    {
+     "count": 11,
+     "isSelected": false,
+     "displayNameFa": "کنلامکس",
+     "displayNameEn": "Canella Max",
+     "key": "canellamax"
+    },
+    {
+     "count": 11,
+     "isSelected": false,
+     "displayNameFa": "بوسوم",
+     "displayNameEn": "Bossom",
+     "key": "bossom"
+    },
+    {
+     "count": 11,
+     "isSelected": false,
+     "displayNameFa": "ژوت",
+     "displayNameEn": "Jute",
+     "key": "jute"
+    },
+    {
+     "count": 11,
+     "isSelected": false,
+     "displayNameFa": "دکتر تافی",
+     "displayNameEn": "Dr.Taffi",
+     "key": "dr-taffi"
+    }
+   ],
+   "priceFacet": {
+    "fromPrice": 83500,
+    "toPrice": 13993200,
+    "selectedFromPrice": null,
+    "selectedToPrice": null
+   },
+   "dynamicFacets": [
+    {
+     "key": {
+      "displayNameFa": "زمان استفاده",
+      "displayNameEn": "usage-time"
+     },
+     "values": [
+      {
+       "count": 136,
+       "isSelected": false,
+       "displayNameFa": "روز و شب",
+       "displayNameEn": "day-and-night",
+       "key": "facetKey.usage-time:day-and-night"
+      },
+      {
+       "count": 13,
+       "isSelected": false,
+       "displayNameFa": "روز",
+       "displayNameEn": "day",
+       "key": "facetKey.usage-time:day"
+      }
+     ]
+    },
+    {
+     "key": {
+      "displayNameFa": "نیاز به آبکشی",
+      "displayNameEn": "requires-rinsing"
+     },
+     "values": [
+      {
+       "count": 2,
+       "isSelected": false,
+       "displayNameFa": "ندارد",
+       "displayNameEn": "no",
+       "key": "facetKey.requires-rinsing:no"
+      }
+     ]
+    },
+    {
+     "key": {
+      "displayNameFa": "نوع بسته بندی",
+      "displayNameEn": "packaging-type"
+     },
+     "values": [
+      {
+       "count": 77,
+       "isSelected": false,
+       "displayNameFa": "تیوبی",
+       "displayNameEn": "tube",
+       "key": "facetKey.packaging-type:tube"
+      },
+      {
+       "count": 35,
+       "isSelected": false,
+       "displayNameFa": "پمپی",
+       "displayNameEn": "pump",
+       "key": "facetKey.packaging-type:pump"
+      },
+      {
+       "count": 22,
+       "isSelected": false,
+       "displayNameFa": "کاسه ای",
+       "displayNameEn": "bowl-shaped",
+       "key": "facetKey.packaging-type:bowl-shaped"
+      }
+     ]
+    }
+   ],
+   "stockFacet": {
+    "hasStock": {
+     "count": 541,
+     "isSelected": true,
+     "displayNameFa": "موجودی",
+     "displayNameEn": "stockKey",
+     "key": "true"
+    },
+    "outOfStock": {
+     "count": 0,
+     "isSelected": false,
+     "displayNameFa": "موجودی",
+     "displayNameEn": "stockKey",
+     "key": "false"
+    }
+   },
+   "categories": [
+    {
+     "breadcrumb": [
+      {
+       "level": 1,
+       "id": "27",
+       "slug": "skincare",
+       "nameFa": "مراقبت پوست",
+       "nameEn": null
+      }
+     ],
+     "count": 516,
+     "isSelected": false,
+     "displayNameFa": "مراقبت پوست",
+     "displayNameEn": "skincare",
+     "key": "cat1Key:skincare",
+     "children": [
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "27",
+         "slug": "skincare",
+         "nameFa": "مراقبت پوست",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "143",
+         "slug": "face-care",
+         "nameFa": "مراقبت صورت",
+         "nameEn": null
+        }
+       ],
+       "count": 458,
+       "isSelected": false,
+       "displayNameFa": "مراقبت صورت",
+       "displayNameEn": "face-care",
+       "key": "cat2Key:face-care",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "143",
+           "slug": "face-care",
+           "nameFa": "مراقبت صورت",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "145",
+           "slug": "moisturizer",
+           "nameFa": "آبرسان و مرطوب کننده",
+           "nameEn": null
+          }
+         ],
+         "count": 447,
+         "isSelected": false,
+         "displayNameFa": "آبرسان و مرطوب کننده",
+         "displayNameEn": "moisturizer",
+         "key": "cat3Key:moisturizer",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "143",
+           "slug": "face-care",
+           "nameFa": "مراقبت صورت",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "149",
+           "slug": "sun-block-sun-protecter",
+           "nameFa": "ضد آفتاب",
+           "nameEn": null
+          }
+         ],
+         "count": 4,
+         "isSelected": false,
+         "displayNameFa": "ضد آفتاب",
+         "displayNameEn": "sun-block-sun-protecter",
+         "key": "cat3Key:sun-block-sun-protecter",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "143",
+           "slug": "face-care",
+           "nameFa": "مراقبت صورت",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "146",
+           "slug": "day-cream-night-cream",
+           "nameFa": "کرم شب و روز",
+           "nameEn": null
+          }
+         ],
+         "count": 2,
+         "isSelected": false,
+         "displayNameFa": "کرم شب و روز",
+         "displayNameEn": "day-cream-night-cream",
+         "key": "cat3Key:day-cream-night-cream",
+         "children": []
+        }
+       ]
+      },
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "27",
+         "slug": "skincare",
+         "nameFa": "مراقبت پوست",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "165",
+         "slug": "nail-treatment",
+         "nameFa": "مراقبت دست و ناخن",
+         "nameEn": null
+        }
+       ],
+       "count": 37,
+       "isSelected": false,
+       "displayNameFa": "مراقبت دست و ناخن",
+       "displayNameEn": "nail-treatment",
+       "key": "cat2Key:nail-treatment",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "165",
+           "slug": "nail-treatment",
+           "nameFa": "مراقبت دست و ناخن",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "42",
+           "slug": "hand-cream-nail-cream",
+           "nameFa": "کرم دست و ناخن",
+           "nameEn": null
+          }
+         ],
+         "count": 37,
+         "isSelected": false,
+         "displayNameFa": "کرم دست و ناخن",
+         "displayNameEn": "hand-cream-nail-cream",
+         "key": "cat3Key:hand-cream-nail-cream",
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "breadcrumb": [
+      {
+       "level": 1,
+       "id": "58",
+       "slug": "hair",
+       "nameFa": "مراقبت و زیبایی مو",
+       "nameEn": null
+      }
+     ],
+     "count": 9,
+     "isSelected": false,
+     "displayNameFa": "مراقبت و زیبایی مو",
+     "displayNameEn": "hair",
+     "key": "cat1Key:hair",
+     "children": [
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "58",
+         "slug": "hair",
+         "nameFa": "مراقبت و زیبایی مو",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "625",
+         "slug": "hair-care",
+         "nameFa": "مراقبت از مو",
+         "nameEn": null
+        }
+       ],
+       "count": 9,
+       "isSelected": false,
+       "displayNameFa": "مراقبت از مو",
+       "displayNameEn": "hair-care",
+       "key": "cat2Key:hair-care",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "58",
+           "slug": "hair",
+           "nameFa": "مراقبت و زیبایی مو",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "625",
+           "slug": "hair-care",
+           "nameFa": "مراقبت از مو",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "170",
+           "slug": "hair-cream",
+           "nameFa": "کرم و لوسیون مو",
+           "nameEn": null
+          }
+         ],
+         "count": 8,
+         "isSelected": false,
+         "displayNameFa": "کرم و لوسیون مو",
+         "displayNameEn": "hair-cream",
+         "key": "cat3Key:hair-cream",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "58",
+           "slug": "hair",
+           "nameFa": "مراقبت و زیبایی مو",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "625",
+           "slug": "hair-care",
+           "nameFa": "مراقبت از مو",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "66",
+           "slug": "hair-conditioner",
+           "nameFa": "نرم کننده مو",
+           "nameEn": null
+          }
+         ],
+         "count": 1,
+         "isSelected": false,
+         "displayNameFa": "نرم کننده مو",
+         "displayNameEn": "hair-conditioner",
+         "key": "cat3Key:hair-conditioner",
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

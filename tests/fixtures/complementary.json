@@ -1,0 +1,53 @@
+{
+ "isSuccess": true,
+ "data": [
+  {
+   "id": "28026",
+   "nameFa": "ژل کرم ضد آفتاب مدل SPF50 Oil Free مناسب پوست چرب",
+   "nameEn": "Syn Skin SPF50 Oil Free sun screen cream gel for oily skin",
+   "hasStock": true,
+   "slug": "syn-skin-syn-shield-oil-free-sun-screen-cream-gel-spf50-28026",
+   "imageUrl": "https://storage.khanoumi.com/ProductImages/280260INVISIBLE00004-2024528133832122.jpg",
+   "basePrice": 810750,
+   "brand": {
+    "id": 0,
+    "nameFa": "ساین اسکین",
+    "nameEn": "Syn Skin",
+    "slug": "syn-skin",
+    "consideration": null
+   },
+   "flags": "",
+   "discountPrice": 183710,
+   "discountPercent": 23,
+   "effectivePrice": 627040,
+   "colorsCount": 3,
+   "isSalable": true,
+   "ad": null,
+   "breadcrumb": []
+  },
+  {
+   "id": "33944",
+   "nameFa": "کرم ژل دور چشم سه کاره 20 گرم",
+   "nameEn": "Synskin Triple Action Eye Contour Cream 20g",
+   "hasStock": true,
+   "slug": "synskin-triple-action-eye-contour-cream-20g-33944",
+   "imageUrl": "https://storage.khanoumi.com/ProductImages/33944-2024528142818427.jpg",
+   "basePrice": 840000,
+   "brand": {
+    "id": 0,
+    "nameFa": "ساین اسکین",
+    "nameEn": "Syn Skin",
+    "slug": "syn-skin",
+    "consideration": null
+   },
+   "flags": "",
+   "discountPrice": 210000,
+   "discountPercent": 25,
+   "effectivePrice": 630000,
+   "colorsCount": 1,
+   "isSalable": true,
+   "ad": null,
+   "breadcrumb": []
+  }
+ ]
+}

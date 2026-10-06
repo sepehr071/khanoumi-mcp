@@ -1,0 +1,823 @@
+{
+ "isSuccess": true,
+ "data": {
+  "queryId": "06E3A1F7E941F0FC",
+  "sort": null,
+  "products": {
+   "totalCount": 67236,
+   "pageNumber": 1,
+   "pageSize": 1,
+   "items": []
+  },
+  "facets": {
+   "categories": [
+    {
+     "breadcrumb": [
+      {
+       "level": 1,
+       "id": "620",
+       "slug": "scented-products",
+       "nameFa": "عطر و اسپری",
+       "nameEn": null
+      }
+     ],
+     "count": 12183,
+     "isSelected": false,
+     "displayNameFa": "عطر و اسپری",
+     "displayNameEn": "scented-products",
+     "key": "cat1Key:scented-products",
+     "children": [
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "620",
+         "slug": "scented-products",
+         "nameFa": "عطر و اسپری",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "85",
+         "slug": "fragrance",
+         "nameFa": "عطر و ادکلن",
+         "nameEn": null
+        }
+       ],
+       "count": 6118,
+       "isSelected": false,
+       "displayNameFa": "عطر و ادکلن",
+       "displayNameEn": "fragrance",
+       "key": "cat2Key:fragrance",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "620",
+           "slug": "scented-products",
+           "nameFa": "عطر و اسپری",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "85",
+           "slug": "fragrance",
+           "nameFa": "عطر و ادکلن",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "180",
+           "slug": "men-perfume",
+           "nameFa": "عطر مردانه",
+           "nameEn": null
+          }
+         ],
+         "count": 3254,
+         "isSelected": false,
+         "displayNameFa": "عطر مردانه",
+         "displayNameEn": "men-perfume",
+         "key": "cat3Key:men-perfume",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "620",
+           "slug": "scented-products",
+           "nameFa": "عطر و اسپری",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "85",
+           "slug": "fragrance",
+           "nameFa": "عطر و ادکلن",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "179",
+           "slug": "perfume-for-women",
+           "nameFa": "عطر زنانه",
+           "nameEn": null
+          }
+         ],
+         "count": 2776,
+         "isSelected": false,
+         "displayNameFa": "عطر زنانه",
+         "displayNameEn": "perfume-for-women",
+         "key": "cat3Key:perfume-for-women",
+         "children": []
+        }
+       ]
+      },
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "620",
+         "slug": "scented-products",
+         "nameFa": "عطر و اسپری",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "634",
+         "slug": "pocket-perfume",
+         "nameFa": "عطر جیبی",
+         "nameEn": null
+        }
+       ],
+       "count": 2827,
+       "isSelected": false,
+       "displayNameFa": "عطر جیبی",
+       "displayNameEn": "pocket-perfume",
+       "key": "cat2Key:pocket-perfume",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "620",
+           "slug": "scented-products",
+           "nameFa": "عطر و اسپری",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "634",
+           "slug": "pocket-perfume",
+           "nameFa": "عطر جیبی",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "281",
+           "slug": "men-pocket-perfume",
+           "nameFa": "عطر جیبی مردانه",
+           "nameEn": null
+          }
+         ],
+         "count": 1437,
+         "isSelected": false,
+         "displayNameFa": "عطر جیبی مردانه",
+         "displayNameEn": "men-pocket-perfume",
+         "key": "cat3Key:men-pocket-perfume",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "620",
+           "slug": "scented-products",
+           "nameFa": "عطر و اسپری",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "634",
+           "slug": "pocket-perfume",
+           "nameFa": "عطر جیبی",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "280",
+           "slug": "women-pocket-perfume",
+           "nameFa": "عطر جیبی زنانه",
+           "nameEn": null
+          }
+         ],
+         "count": 1382,
+         "isSelected": false,
+         "displayNameFa": "عطر جیبی زنانه",
+         "displayNameEn": "women-pocket-perfume",
+         "key": "cat3Key:women-pocket-perfume",
+         "children": []
+        }
+       ]
+      },
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "620",
+         "slug": "scented-products",
+         "nameFa": "عطر و اسپری",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "621",
+         "slug": "body-spray",
+         "nameFa": "اسپری بدن",
+         "nameEn": null
+        }
+       ],
+       "count": 1726,
+       "isSelected": false,
+       "displayNameFa": "اسپری بدن",
+       "displayNameEn": "body-spray",
+       "key": "cat2Key:body-spray",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "620",
+           "slug": "scented-products",
+           "nameFa": "عطر و اسپری",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "621",
+           "slug": "body-spray",
+           "nameFa": "اسپری بدن",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "177",
+           "slug": "men-body-spray",
+           "nameFa": "اسپری مردانه",
+           "nameEn": null
+          }
+         ],
+         "count": 905,
+         "isSelected": false,
+         "displayNameFa": "اسپری مردانه",
+         "displayNameEn": "men-body-spray",
+         "key": "cat3Key:men-body-spray",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "620",
+           "slug": "scented-products",
+           "nameFa": "عطر و اسپری",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "621",
+           "slug": "body-spray",
+           "nameFa": "اسپری بدن",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "87",
+           "slug": "body-spray-for-women",
+           "nameFa": "اسپری زنانه",
+           "nameEn": null
+          }
+         ],
+         "count": 821,
+         "isSelected": false,
+         "displayNameFa": "اسپری زنانه",
+         "displayNameEn": "body-spray-for-women",
+         "key": "cat3Key:body-spray-for-women",
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "breadcrumb": [
+      {
+       "level": 1,
+       "id": "27",
+       "slug": "skincare",
+       "nameFa": "مراقبت پوست",
+       "nameEn": null
+      }
+     ],
+     "count": 11874,
+     "isSelected": false,
+     "displayNameFa": "مراقبت پوست",
+     "displayNameEn": "skincare",
+     "key": "cat1Key:skincare",
+     "children": [
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "27",
+         "slug": "skincare",
+         "nameFa": "مراقبت پوست",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "143",
+         "slug": "face-care",
+         "nameFa": "مراقبت صورت",
+         "nameEn": null
+        }
+       ],
+       "count": 6557,
+       "isSelected": false,
+       "displayNameFa": "مراقبت صورت",
+       "displayNameEn": "face-care",
+       "key": "cat2Key:face-care",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "143",
+           "slug": "face-care",
+           "nameFa": "مراقبت صورت",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "145",
+           "slug": "moisturizer",
+           "nameFa": "آبرسان و مرطوب کننده",
+           "nameEn": null
+          }
+         ],
+         "count": 2064,
+         "isSelected": false,
+         "displayNameFa": "آبرسان و مرطوب کننده",
+         "displayNameEn": "moisturizer",
+         "key": "cat3Key:moisturizer",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "143",
+           "slug": "face-care",
+           "nameFa": "مراقبت صورت",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "117",
+           "slug": "face-mask",
+           "nameFa": "ماسک صورت",
+           "nameEn": null
+          }
+         ],
+         "count": 1097,
+         "isSelected": false,
+         "displayNameFa": "ماسک صورت",
+         "displayNameEn": "face-mask",
+         "key": "cat3Key:face-mask",
+         "children": []
+        }
+       ]
+      },
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "27",
+         "slug": "skincare",
+         "nameFa": "مراقبت پوست",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "128",
+         "slug": "cleanser",
+         "nameFa": "پاک کننده و شوینده",
+         "nameEn": null
+        }
+       ],
+       "count": 2445,
+       "isSelected": false,
+       "displayNameFa": "پاک کننده و شوینده",
+       "displayNameEn": "cleanser",
+       "key": "cat2Key:cleanser",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "128",
+           "slug": "cleanser",
+           "nameFa": "پاک کننده و شوینده",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "29",
+           "slug": "face-wash-toner",
+           "nameFa": "شوینده صورت",
+           "nameEn": null
+          }
+         ],
+         "count": 1230,
+         "isSelected": false,
+         "displayNameFa": "شوینده صورت",
+         "displayNameEn": "face-wash-toner",
+         "key": "cat3Key:face-wash-toner",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "128",
+           "slug": "cleanser",
+           "nameFa": "پاک کننده و شوینده",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "141",
+           "slug": "makeup-remover",
+           "nameFa": "میسلار واتر",
+           "nameEn": null
+          }
+         ],
+         "count": 511,
+         "isSelected": false,
+         "displayNameFa": "میسلار واتر",
+         "displayNameEn": "makeup-remover",
+         "key": "cat3Key:makeup-remover",
+         "children": []
+        }
+       ]
+      },
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "27",
+         "slug": "skincare",
+         "nameFa": "مراقبت پوست",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "131",
+         "slug": "body-care",
+         "nameFa": "مراقبت بدن",
+         "nameEn": null
+        }
+       ],
+       "count": 1176,
+       "isSelected": false,
+       "displayNameFa": "مراقبت بدن",
+       "displayNameEn": "body-care",
+       "key": "cat2Key:body-care",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "27",
+           "slug": "skincare",
+           "nameFa": "مراقبت پوست",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "131",
+           "slug": "body-care",
+           "nameFa": "مراقبت بدن",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "38",
+           "slug": "body-lotion-body-cream",
+           "nameFa": "روغن و لوسیون بدن",
+           "nameEn": null
+          }
+         ],
+         "count": 878,
+         "isSelected": false,
+         "displayNameFa": "روغن و لوسیون بدن",
+         "displayNameEn": "body-lotion-body-cream",
+         "key": "cat3Key:body-lotion-body-cream",
+         "children": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "breadcrumb": [
+      {
+       "level": 1,
+       "id": "8",
+       "slug": "makeup",
+       "nameFa": "آرایشی",
+       "nameEn": null
+      }
+     ],
+     "count": 8829,
+     "isSelected": false,
+     "displayNameFa": "آرایشی",
+     "displayNameEn": "makeup",
+     "key": "cat1Key:makeup",
+     "children": [
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "8",
+         "slug": "makeup",
+         "nameFa": "آرایشی",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "17",
+         "slug": "eye-makeup",
+         "nameFa": "آرایش چشم و ابرو",
+         "nameEn": null
+        }
+       ],
+       "count": 2419,
+       "isSelected": false,
+       "displayNameFa": "آرایش چشم و ابرو",
+       "displayNameEn": "eye-makeup",
+       "key": "cat2Key:eye-makeup",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "8",
+           "slug": "makeup",
+           "nameFa": "آرایشی",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "17",
+           "slug": "eye-makeup",
+           "nameFa": "آرایش چشم و ابرو",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "23",
+           "slug": "mascara",
+           "nameFa": "ریمل",
+           "nameEn": null
+          }
+         ],
+         "count": 701,
+         "isSelected": false,
+         "displayNameFa": "ریمل",
+         "displayNameEn": "mascara",
+         "key": "cat3Key:mascara",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "8",
+           "slug": "makeup",
+           "nameFa": "آرایشی",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "17",
+           "slug": "eye-makeup",
+           "nameFa": "آرایش چشم و ابرو",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "20",
+           "slug": "eyeliner",
+           "nameFa": "مداد و خط چشم",
+           "nameEn": null
+          }
+         ],
+         "count": 594,
+         "isSelected": false,
+         "displayNameFa": "مداد و خط چشم",
+         "displayNameEn": "eyeliner",
+         "key": "cat3Key:eyeliner",
+         "children": []
+        }
+       ]
+      },
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "8",
+         "slug": "makeup",
+         "nameFa": "آرایشی",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "187",
+         "slug": "makeup-accessories",
+         "nameFa": "ابزار آرایشی",
+         "nameEn": null
+        }
+       ],
+       "count": 1877,
+       "isSelected": false,
+       "displayNameFa": "ابزار آرایشی",
+       "displayNameEn": "makeup-accessories",
+       "key": "cat2Key:makeup-accessories",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "8",
+           "slug": "makeup",
+           "nameFa": "آرایشی",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "187",
+           "slug": "makeup-accessories",
+           "nameFa": "ابزار آرایشی",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "300",
+           "slug": "cosmetic-brush-cosmetic-puff",
+           "nameFa": "براش و قلمو آرایشی",
+           "nameEn": null
+          }
+         ],
+         "count": 841,
+         "isSelected": false,
+         "displayNameFa": "براش و قلمو آرایشی",
+         "displayNameEn": "cosmetic-brush-cosmetic-puff",
+         "key": "cat3Key:cosmetic-brush-cosmetic-puff",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "8",
+           "slug": "makeup",
+           "nameFa": "آرایشی",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "187",
+           "slug": "makeup-accessories",
+           "nameFa": "ابزار آرایشی",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "306",
+           "slug": "makeup-bag",
+           "nameFa": "کیف لوازم آرایشی",
+           "nameEn": null
+          }
+         ],
+         "count": 300,
+         "isSelected": false,
+         "displayNameFa": "کیف لوازم آرایشی",
+         "displayNameEn": "makeup-bag",
+         "key": "cat3Key:makeup-bag",
+         "children": []
+        }
+       ]
+      },
+      {
+       "breadcrumb": [
+        {
+         "level": 1,
+         "id": "8",
+         "slug": "makeup",
+         "nameFa": "آرایشی",
+         "nameEn": null
+        },
+        {
+         "level": 2,
+         "id": "9",
+         "slug": "face-makeup",
+         "nameFa": "آرایش صورت",
+         "nameEn": null
+        }
+       ],
+       "count": 1873,
+       "isSelected": false,
+       "displayNameFa": "آرایش صورت",
+       "displayNameEn": "face-makeup",
+       "key": "cat2Key:face-makeup",
+       "children": [
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "8",
+           "slug": "makeup",
+           "nameFa": "آرایشی",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "9",
+           "slug": "face-makeup",
+           "nameFa": "آرایش صورت",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "10",
+           "slug": "foundation-makeup",
+           "nameFa": "کرم پودر",
+           "nameEn": null
+          }
+         ],
+         "count": 461,
+         "isSelected": false,
+         "displayNameFa": "کرم پودر",
+         "displayNameEn": "foundation-makeup",
+         "key": "cat3Key:foundation-makeup",
+         "children": []
+        },
+        {
+         "breadcrumb": [
+          {
+           "level": 1,
+           "id": "8",
+           "slug": "makeup",
+           "nameFa": "آرایشی",
+           "nameEn": null
+          },
+          {
+           "level": 2,
+           "id": "9",
+           "slug": "face-makeup",
+           "nameFa": "آرایش صورت",
+           "nameEn": null
+          },
+          {
+           "level": 3,
+           "id": "289",
+           "slug": "compact-powder",
+           "nameFa": "پنکک",
+           "nameEn": null
+          }
+         ],
+         "count": 264,
+         "isSelected": false,
+         "displayNameFa": "پنکک",
+         "displayNameEn": "compact-powder",
+         "key": "cat3Key:compact-powder",
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

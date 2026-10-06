@@ -1,0 +1,32 @@
+{
+ "isSuccess": true,
+ "data": {
+  "totalCount": 3,
+  "pageNumber": 1,
+  "pageSize": 2,
+  "items": [
+   {
+    "id": "6fc4e97b-617a-46b1-a499-99901368faa3",
+    "userName": null,
+    "description": "ریزش موهام بهتر شده و چربی مو کم میشه و مو تقویت میشه",
+    "likeCount": 0,
+    "isBuyer": false,
+    "createdAt": "2024-03-11T00:55:44+00:00",
+    "imageUrls": [
+     "https://cdn.khanoumi.com/metro/comments/e4/1d/e41d734cae0449bbaa7654ed38dfada9.jpeg"
+    ]
+   },
+   {
+    "id": "52817799-b0a3-4f2d-8949-aa2e61d4e0d0",
+    "userName": null,
+    "description": "ضدریزش خوبیه و تقویت کننده هست و خارش سرمم خوب شده و چربی موهام بهتره",
+    "likeCount": 0,
+    "isBuyer": false,
+    "createdAt": "2023-10-26T00:08:33+00:00",
+    "imageUrls": [
+     "https://cdn.khanoumi.com/metro/comments/af/61/af618cb828a24938ba31435a076800bc.jpeg"
+    ]
+   }
+  ]
+ }
+}

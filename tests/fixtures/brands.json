@@ -1,0 +1,17 @@
+{
+ "isSuccess": true,
+ "data": {
+  "totalCount": 1,
+  "pageNumber": 1,
+  "pageSize": 20,
+  "items": [
+   {
+    "id": "3368",
+    "slug": "simple",
+    "nameFa": "سیمپل",
+    "nameEn": "Simple",
+    "logoUrl": null
+   }
+  ]
+ }
+}

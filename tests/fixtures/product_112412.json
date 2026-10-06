@@ -1,0 +1,168 @@
+{
+ "isSuccess": true,
+ "data": {
+  "id": "112412",
+  "slug": "venus-gold-rose-18-k-gold-bar-112412",
+  "nameFa": "شمش طلا 18 عیار مدل گل رز",
+  "nameEn": "Venus Gold Rose 18 K Gold Bar ",
+  "isPublished": true,
+  "isDiscontinued": false,
+  "isSalable": true,
+  "basePrice": 3560264,
+  "salesPrice": 3560264,
+  "discountPrice": 0,
+  "discountPercent": 0,
+  "rate": 4.5,
+  "ratesCount": 7,
+  "commentsCount": 7,
+  "addedToWishListCount": 154,
+  "mainImageUrl": "https://storage.khanoumi.com/ProductImages/1-1-2026419145137387.jpg",
+  "pageTitle": null,
+  "pageH1": "شمش طلا 18 عیار مدل گل رز",
+  "flags": "",
+  "brand": {
+   "id": 5195,
+   "nameFa": "ونوس گلد",
+   "nameEn": "Venus Gold",
+   "slug": "venusgold",
+   "consideration": null
+  },
+  "breadcrumb": [
+   {
+    "level": 1,
+    "id": "684",
+    "slug": "gold-silver",
+    "nameFa": "طلا و نقره",
+    "nameEn": "gold-silver"
+   },
+   {
+    "level": 2,
+    "id": "732",
+    "slug": "bullion",
+    "nameFa": "شمش و سکه طلا",
+    "nameEn": "bullion"
+   }
+  ],
+  "breadcrumbBrandCategory": null,
+  "weight": {
+   "value": 0.1,
+   "unit": "g",
+   "packageWeight": 50
+  },
+  "images": [
+   {
+    "id": "129020",
+    "imageUrl": "https://storage.khanoumi.com/ProductImages/1-2-2026419145135664.jpg"
+   }
+  ],
+  "videos": [],
+  "variants": [
+   {
+    "id": "600042459",
+    "itemProposalId": "d13b0061-c52b-8663-8380-01a0f258cae1_3be4cd8d0d64455bae8083f1ba9316f1_35602644",
+    "color": null,
+    "weight": {
+     "value": 0.1,
+     "unit": "g",
+     "packageWeight": 50
+    },
+    "isSalable": true,
+    "basePrice": 3560264,
+    "salesPrice": 3560264,
+    "discountPrice": 0,
+    "discountPercent": 0,
+    "limit": 5,
+    "leadTime": 1,
+    "giftVariantNameFa": null,
+    "flags": "Gold, PromotionExcluded, Gold18",
+    "vendorDisplayName": "طلالند",
+    "shipBySeller": true,
+    "goldBasePrice": {
+     "goldPrice": 26658663,
+     "goldValue": 2665866,
+     "makingFeePercent": 30.5,
+     "marginPercent": 0,
+     "nonGoldComponentCost": 0,
+     "vatPercent": 10,
+     "goldPriceExpiration": "2026-10-06T01:28:16.5542977+03:30",
+     "makingFee": 813089,
+     "margin": 0,
+     "vat": 81309
+    }
+   },
+   {
+    "id": "600042460",
+    "itemProposalId": "249fd49e-ac59-86cd-8317-01a0f258ca49_ca8387f391e64478b5a5cef5704a86ed_69739062",
+    "color": null,
+    "weight": {
+     "value": 0.2,
+     "unit": "g",
+     "packageWeight": 50
+    },
+    "isSalable": true,
+    "basePrice": 6973906,
+    "salesPrice": 6973906,
+    "discountPrice": 0,
+    "discountPercent": 0,
+    "limit": 5,
+    "leadTime": 1,
+    "giftVariantNameFa": null,
+    "flags": "Gold, PromotionExcluded, Gold18",
+    "vendorDisplayName": "طلالند",
+    "shipBySeller": true,
+    "goldBasePrice": {
+     "goldPrice": 26658663,
+     "goldValue": 5331732,
+     "makingFeePercent": 28,
+     "marginPercent": 0,
+     "nonGoldComponentCost": 0,
+     "vatPercent": 10,
+     "goldPriceExpiration": "2026-10-06T01:28:16.5542977+03:30",
+     "makingFee": 1492885,
+     "margin": 0,
+     "vat": 149288
+    }
+   },
+   {
+    "id": "600048703",
+    "itemProposalId": "9d8257d8-3252-80a7-9c4e-019e3f12e13e_90a64b34644047158aec360d12863e0a_88792701",
+    "color": null,
+    "weight": {
+     "value": 0.25,
+     "unit": "g",
+     "packageWeight": 50
+    },
+    "isSalable": true,
+    "basePrice": 9060479,
+    "salesPrice": 8879270,
+    "discountPrice": 181209,
+    "discountPercent": 2,
+    "limit": 5,
+    "leadTime": 2,
+    "giftVariantNameFa": null,
+    "flags": "Gold, PromotionExcluded, Gold18",
+    "vendorDisplayName": "ایلونا گالری",
+    "shipBySeller": true,
+    "goldBasePrice": {
+     "goldPrice": 26658663,
+     "goldValue": 6664665,
+     "makingFeePercent": 24,
+     "marginPercent": 7,
+     "nonGoldComponentCost": 0,
+     "vatPercent": 10,
+     "goldPriceExpiration": "2026-10-06T01:28:16.5542977+03:30",
+     "makingFee": 1599519,
+     "margin": 578493,
+     "vat": 217801
+    }
+   }
+  ],
+  "attributes": [],
+  "descriptionMarkdown": null,
+  "howToUseMarkdown": null,
+  "descriptionMeta": "خرید اینترنتی شمش طلا 18 عیار مدل گل رز از فروشگاه اینترنتی آرایشی و بهداشتی خانومی",
+  "descriptionHtmlEn": null,
+  "descriptionHtmlFa": "<p><strong>نوع:</strong> شمش</p>\r\n<p><strong>جنس:</strong> طلا</p>\r\n<p><strong>عیار:</strong> 18</p>",
+  "howToUseHtml": null
+ }
+}

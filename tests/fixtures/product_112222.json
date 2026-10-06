@@ -1,0 +1,215 @@
+{
+ "isSuccess": true,
+ "data": {
+  "id": "112222",
+  "slug": "golden-rose-sheer-bright-lipstick-112222",
+  "nameFa": "رژلب شیر برایت گلدن رز (Sheer Bright)",
+  "nameEn": "Golden Rose Sheer Bright Lipstick",
+  "isPublished": true,
+  "isDiscontinued": false,
+  "isSalable": true,
+  "basePrice": 1057980,
+  "salesPrice": 1047646,
+  "discountPrice": 10333,
+  "discountPercent": 1,
+  "rate": 4.5,
+  "ratesCount": 37,
+  "commentsCount": 37,
+  "addedToWishListCount": 506,
+  "mainImageUrl": "https://storage.khanoumi.com/ProductImages/88-2-202646181944265.jpg",
+  "pageTitle": "رژلب شیر برایت گلدن رز در رنگ بندی متنوع",
+  "pageH1": "رژ لب جامد گلدن رز مدل Sheer Bright ",
+  "flags": "",
+  "brand": {
+   "id": 240,
+   "nameFa": "گلدن رز",
+   "nameEn": "golden rose",
+   "slug": "golden-rose",
+   "consideration": null
+  },
+  "breadcrumb": [
+   {
+    "level": 1,
+    "id": "8",
+    "slug": "makeup",
+    "nameFa": "آرایشی",
+    "nameEn": "makeup"
+   },
+   {
+    "level": 2,
+    "id": "24",
+    "slug": "lips-makeup",
+    "nameFa": "آرایش لب",
+    "nameEn": "lips-makeup"
+   },
+   {
+    "level": 3,
+    "id": "25",
+    "slug": "lipstick",
+    "nameFa": "رژ لب جامد",
+    "nameEn": "lipstick"
+   }
+  ],
+  "breadcrumbBrandCategory": {
+   "title": "رژ لب گلدن رز",
+   "slug": "golden-rose-lipstick"
+  },
+  "weight": {
+   "value": 0,
+   "unit": "g",
+   "packageWeight": 25
+  },
+  "images": [
+   {
+    "id": "128551",
+    "imageUrl": "https://storage.khanoumi.com/ProductImages/88-202646181959207.jpg"
+   }
+  ],
+  "videos": [],
+  "variants": [
+   {
+    "id": "600041929",
+    "itemProposalId": "abdc91a9f7884dd2a5e33d4367623248_4fa0799dc65d4923ab04600add5b41e9_10579799",
+    "color": {
+     "id": "61938",
+     "name": "101",
+     "imageUrl": "https://storage.khanoumi.com/ColorImages/101-20264618113865.jpg",
+     "hexCode": null,
+     "images": [
+      {
+       "id": "107126",
+       "colorId": "61938",
+       "imageUrl": "https://storage.khanoumi.com/ColorGallery/88-202646181156295.jpg"
+      }
+     ]
+    },
+    "weight": {
+     "value": 0,
+     "unit": "g",
+     "packageWeight": 25
+    },
+    "isSalable": true,
+    "basePrice": 1057980,
+    "salesPrice": 1057979,
+    "discountPrice": 0,
+    "discountPercent": 0,
+    "limit": 5,
+    "leadTime": 2,
+    "giftVariantNameFa": null,
+    "flags": "None",
+    "vendorDisplayName": null,
+    "shipBySeller": false,
+    "goldBasePrice": null
+   },
+   {
+    "id": "600041930",
+    "itemProposalId": "89e13c64f68a44dcb5967762f296b1c9_9136e4067aaf4108bf94146fe0af62ef_10579799",
+    "color": {
+     "id": "61939",
+     "name": "102",
+     "imageUrl": "https://storage.khanoumi.com/ColorImages/102-20264618117219.jpg",
+     "hexCode": null,
+     "images": [
+      {
+       "id": "107125",
+       "colorId": "61939",
+       "imageUrl": "https://storage.khanoumi.com/ColorGallery/89-202646181153695.jpg"
+      }
+     ]
+    },
+    "weight": {
+     "value": 0,
+     "unit": "g",
+     "packageWeight": 25
+    },
+    "isSalable": true,
+    "basePrice": 1057980,
+    "salesPrice": 1057979,
+    "discountPrice": 0,
+    "discountPercent": 0,
+    "limit": 5,
+    "leadTime": 2,
+    "giftVariantNameFa": null,
+    "flags": "None",
+    "vendorDisplayName": null,
+    "shipBySeller": false,
+    "goldBasePrice": null
+   },
+   {
+    "id": "600041931",
+    "itemProposalId": "99e607f136714152abb06a044dbe9ff2_6fd0ca0d6bc141979082684f9cc9889e_10476462",
+    "color": {
+     "id": "61940",
+     "name": "103",
+     "imageUrl": "https://storage.khanoumi.com/ColorImages/103-202646181110983.jpg",
+     "hexCode": null,
+     "images": [
+      {
+       "id": "107124",
+       "colorId": "61940",
+       "imageUrl": "https://storage.khanoumi.com/ColorGallery/90-202646181150541.jpg"
+      }
+     ]
+    },
+    "weight": {
+     "value": 0,
+     "unit": "g",
+     "packageWeight": 25
+    },
+    "isSalable": true,
+    "basePrice": 1057980,
+    "salesPrice": 1047646,
+    "discountPrice": 10333,
+    "discountPercent": 1,
+    "limit": 5,
+    "leadTime": 2,
+    "giftVariantNameFa": null,
+    "flags": "None",
+    "vendorDisplayName": null,
+    "shipBySeller": false,
+    "goldBasePrice": null
+   },
+   {
+    "id": "600041932",
+    "itemProposalId": "e5b8b9e9bcb54c318c6916248f5fd32c_93210cce8fa44cdabf233a808786e7b1_10579800",
+    "color": {
+     "id": "61941",
+     "name": "104",
+     "imageUrl": "https://storage.khanoumi.com/ColorImages/104-202646181115190.jpg",
+     "hexCode": null,
+     "images": [
+      {
+       "id": "107123",
+       "colorId": "61941",
+       "imageUrl": "https://storage.khanoumi.com/ColorGallery/91-202646181147522.jpg"
+      }
+     ]
+    },
+    "weight": {
+     "value": 0,
+     "unit": "g",
+     "packageWeight": 25
+    },
+    "isSalable": true,
+    "basePrice": 1057980,
+    "salesPrice": 1057980,
+    "discountPrice": 0,
+    "discountPercent": 0,
+    "limit": 5,
+    "leadTime": 2,
+    "giftVariantNameFa": null,
+    "flags": "None",
+    "vendorDisplayName": null,
+    "shipBySeller": false,
+    "goldBasePrice": null
+   }
+  ],
+  "attributes": [],
+  "descriptionMarkdown": null,
+  "howToUseMarkdown": null,
+  "descriptionMeta": "خرید اینترنتی رژ لب جامد گلدن رز مدل Sheer Bright در رنگ بندی متنوع و با قیمت مناسب و تضمین اصالت کالا از فروشگاه اینترنتی آرایشی و بهداشتی خانومی",
+  "descriptionHtmlEn": null,
+  "descriptionHtmlFa": "<p><strong>بافت:</strong> جامد</p>\r\n<p><strong>حجم&zwnj;دهنده: </strong>نیست</p>\r\n<p><strong>SPF</strong><strong>: </strong>ندارد</p>\r\n<p><strong>جلوه نهایی: </strong>براق</p>\r\n<p><strong>پوشانندگی:</strong> بالا</p>\r\n<p><strong>ترکیبات موثر:</strong> روغن نارگیل، کره انبه، ویتامین E</p>\r\n<p><strong>کاربرد:</strong> استفاده روزانه و مهمانی</p>\r\n<p><strong>ماندگاری:</strong> زیاد</p>\r\n<p><strong>برند:</strong> گلدن رز (Golden Rose)</p>\r\n<p><strong>مبدا برند: </strong>ترکیه</p>\r\n<p><strong>کشور تولیدکننده: </strong>ترکیه</p>\r\n<p><strong>سایر ویژگی&zwnj;ها:</strong> گیاهی، فرمولاسیون سبک، مرطوب&zwnj;کننده، آبرسان و نرم&zwnj;کننده، درخشان&zwnj;کننده</p>",
+  "howToUseHtml": "<p>ابتدا لب&zwnj;ها را با یک لایه نازک مرطوب&zwnj;کننده لب آماده کنید تا از خشکی جلوگیری شود. سپس با استفاده از یک مداد لب، طرح لب&zwnj;ها را به&zwnj;آرامی مشخص کنید. پس از آن، رژ لب را با یک قلم&zwnj;مو یا به&zwnj;صورت مستقیم از خود رژ روی لب&zwnj;ها بزنید. برای ماندگاری بیشتر، می&zwnj;توانید رژ را با کمی پودر تثبیت کنید. در نهایت، برای جلوه بهتر می&zwnj;توانید از برق لب استفاده کنید.</p>\r\n<p>&nbsp;</p>\r\n<h3><strong>هشدار مصرف:</strong></h3>\r\n<p>از رژ لب تاریخ&zwnj;گذشته استفاده نکنید.</p>\r\n<p>در صورت بروز واکنش&zwnj;های آلرژیک، مصرف را متوقف کنید.</p>\r\n<p>از رژ لب برای آرایش چشم استفاده نکنید.</p>\r\n<p>از استفاده مشترک رژ لب با دیگران خودداری کنید.</p>\r\n<p>از خرید محصولات با ترکیبات نامعلوم پرهیز کنید.</p>"
+ }
+}

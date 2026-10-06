@@ -1,0 +1,26 @@
+{
+ "isSuccess": true,
+ "data": {
+  "id": 295,
+  "title": "کد تخفیف 500 هزار تومانی !",
+  "hasDefaultPic": true,
+  "mobileImageUrl": "https://cdn.khanoumi.com/develop/cml/popup/47/ad/47ad149543344eef8dd1d8cd30037a5f.png",
+  "desktopImageUrl": "https://cdn.khanoumi.com/develop/cml/popup/d3/13/d3134333cec04161ac17e5823e58be20.png",
+  "description": "<p><br></p><p>کد 500 هزار تومانی درگاه اسنپ پی</p><p>برای خرید 4 میلیون تومان</p>",
+  "buttonTitle": "همین الان بخر!",
+  "link": "/tags/festival-js",
+  "voucherCode": "PAYC9UCG",
+  "plpTrigger": {
+   "type": "Second",
+   "conditionValue": 5
+  },
+  "homePageTrigger": {
+   "type": "Second",
+   "conditionValue": 10
+  },
+  "postPone": {
+   "type": "Hour",
+   "conditionValue": 24
+  }
+ }
+}
