@@ -2,19 +2,19 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.sepehr071/khanoumi-mcp",
   "title": "Khanoumi",
-  "description": "Unofficial read-only Khanoumi: search cosmetics and skin care, compare prices, shades, reviews, deals.",
+  "description": "Unofficial read-only Khanoumi: search cosmetics and skin care, compare prices, shades, reviews.",
   "repository": {
     "url": "https://github.com/sepehr071/khanoumi-mcp",
     "source": "github"
   },
   "websiteUrl": "https://github.com/sepehr071/khanoumi-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packages": [
     {
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "khanoumi-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
