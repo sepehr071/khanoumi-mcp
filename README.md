@@ -169,7 +169,7 @@ There's no hosted server in between, no API key, and nothing about you is sent a
 | `kh_blog_search` | Buying guides, routines and ingredient explainers from the Khanoumi magazine |
 </details>
 
-All tools are annotated `readOnlyHint: true` and return compact structured JSON, so they don't flood the agent's context.
+All 12 tools are annotated `readOnlyHint: true` and return compact structured JSON, so they don't flood the agent's context.
 
 ## Good to know
 
