@@ -62,6 +62,9 @@ async def kh_product(product: ProductRef) -> dict[str, Any]:
         "description": _clip(_text(p.get("descriptionHtmlFa")), 1500),
         "how_to_use": _clip(_text(p.get("howToUseHtml")), 800),
         "image": p.get("mainImageUrl"),
+        "images": [
+            u for u in dict.fromkeys([p.get("mainImageUrl"), *(i.get("imageUrl") for i in p.get("images") or [])]) if u
+        ][:4],
         "url": f"{BASE}/products/{p.get('slug')}",
     }
 

@@ -49,7 +49,7 @@ An agent with `khanoumi-mcp` does that in seconds:
 
 ## What it can do
 
-- 🔎 **Search** products by name in Persian or English, with price, discount and stock, sponsored items removed
+- 🔎 **Search** products by name in Persian or English, with price, discount, stock and a product image URL (`image`; `kh_product` adds an `images` gallery), sponsored items removed
 - 💸 **Find the cheapest** in-stock match for a keyword, optionally inside one category
 - 🗂️ **Browse** any category, brand or campaign sorted by price, popularity or date, with price range and filters
 - 🧴 **Filter** by skin type, hair type, free-from (paraben, sulfate), key ingredients, color and brand

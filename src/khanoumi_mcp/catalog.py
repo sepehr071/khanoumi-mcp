@@ -73,15 +73,26 @@ async def kh_search(
     per-shade prices: kh_product.
     """
     _check_range(min_price, max_price)
-    data, out = await _window(
-        page,
-        limit,
-        query=query.strip(),
-        sort=sort,
-        in_stock_only=in_stock_only,
-        min_price=min_price,
-        max_price=max_price,
+    filters: dict[str, Any] = dict(
+        query=query.strip(), sort=sort, in_stock_only=in_stock_only, min_price=min_price, max_price=max_price
     )
+    if sort in ("cheapest", "most_expensive"):
+        # Search sorts by price only inside relevance tiers (a cheap loose match can follow dearer exact ones),
+        # so sort the first 300 matches here. ponytail: matches past 300 stay in the API's order.
+        data = await _list(**filters, page=1, limit=300)
+        items = sorted(
+            (_item(p) for p in _organic(data)),
+            key=lambda i: (i["final_price"] is None, (i["final_price"] or 0) * (-1 if sort == "most_expensive" else 1)),
+        )
+        total = _total(data)
+        out = {
+            "total": total,
+            "page": page,
+            "last_page": -(-total // limit),
+            "products": items[(page - 1) * limit : page * limit],
+        }
+    else:
+        data, out = await _window(page, limit, **filters)
     facets = data.get("facets") or {}
     leaves = sorted(_flat_categories(facets.get("categories") or [], leaves=True), key=lambda c: -c["count"])
     return {
@@ -478,6 +489,7 @@ def _item(p: dict[str, Any]) -> dict[str, Any]:
         "final_price": final or None,
         "price": (final if not pct else price) or None,  # no offer: the site shows only the payable price
         "discount_pct": pct,
+        "image": p.get("imageUrl") or p.get("mainImageUrl"),
         "in_stock": bool(p.get("isSalable")),  # hasStock is always false in similar / complementary replies
         **({"shades": p["colorsCount"]} if (p.get("colorsCount") or 0) > 1 else {}),
         **({"badges": b} if (b := _badges(p.get("flags"))) else {}),
@@ -502,6 +514,7 @@ def _landing_product(p: dict[str, Any]) -> dict[str, Any]:
         "price": (final if not pct else price) or None,
         "discount_pct": pct,
         "in_stock": bool(p.get("isSalable")),
+        "image": p.get("mainImageUrl") or p.get("imageUrl"),
         "url": f"{BASE}/products/{p.get('slug')}",
     }
 

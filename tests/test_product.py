@@ -18,6 +18,7 @@ async def test_kh_product_shades(client, api):
         "price": 1057980,
         "discount_pct": 1,
     }
+    assert out["image"].startswith("https://") and 1 < len(out["images"]) <= 4 and out["images"][0] == out["image"]
     assert (out["rating"], out["rating_count"], out["comment_count"]) == (4.5, 37, 37)
     assert [c["id"] for c in out["categories"]] == [8, 24, 25]
     assert out["variants"][2] == {
@@ -116,7 +117,9 @@ async def test_kh_similar(client, api):
     api[f"/api/ntl/v1/products/slug/{slug}/similar"] = fixture("similar.json")
     out = (await client.call_tool("kh_similar", {"product": slug})).structured_content
     assert out["count"] == 5 and out["products"][0]["id"] == 30634
+    assert all(p["image"].startswith("https://") for p in out["products"])
     assert all(p["in_stock"] for p in out["products"])  # hasStock is false in this reply; isSalable counts
     api[f"/api/ntl/v1/products/slug/{slug}/complementary"] = fixture("complementary.json")
     out = (await client.call_tool("kh_similar", {"product": slug, "kind": "complementary"})).structured_content
     assert [p["id"] for p in out["products"]] == [28026, 33944] and out["products"][0]["shades"] == 3
+    assert all(p["image"].startswith("https://") for p in out["products"])

@@ -16,6 +16,7 @@ async def test_kh_product(client):
         v["final_price"] for v in data["variants"] if v["final_price"]
     )
     assert 0 < data["rating"] <= 5
+    assert data["image"].startswith("https://") and 1 <= len(data["images"]) <= 4
 
 
 async def test_kh_reviews(client):
@@ -26,3 +27,4 @@ async def test_kh_reviews(client):
 async def test_kh_similar(client):
     data = await call(client, "kh_similar", {"product": "cerita-anti-hair-loss-fortifying-shampoo-with-caffeine-20200"})
     assert data["count"] >= 5 and all(p["slug"] for p in data["products"])
+    assert all(p["image"].startswith("https://") for p in data["products"])

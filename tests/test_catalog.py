@@ -26,6 +26,7 @@ async def test_kh_search(client, api):
         "price": 109000,
         "discount_pct": 40,
         "in_stock": True,
+        "image": "https://storage.khanoumi.com/ProductImages/86308-202531016255748.jpg",
         "url": "https://www.khanoumi.com/products/paletta-elderberry-tupe-hydration-cream-100-ml-86308",
     }
     # leaf categories, biggest first, with the id for kh_browse
@@ -43,7 +44,7 @@ async def test_kh_search(client, api):
         "has_stock": "true",
         "from_price": "50000",
         "page_number": "1",
-        "page_size": "36",
+        "page_size": "300",
     }
 
 
@@ -85,6 +86,20 @@ async def test_kh_search_pages_line_up_despite_ads(client, api):
     assert [p["id"] for p in out["products"]][-1] == 1000 and len(out["products"]) == 10
 
 
+async def test_kh_search_price_sort_ignores_relevance_tiers(client, api):
+    # The API sorts by price inside relevance tiers only: dearer exact matches can precede a cheap loose one.
+    data = fixture("search.json")
+    items = data["data"]["products"]["items"]
+    for p, price in zip(items, (300, 100, 200, 50, 400, 150), strict=False):
+        p["effectivePrice"] = price
+    api[PRODUCTS] = data
+    prices = lambda out: [p["final_price"] for p in out.structured_content["products"]]  # noqa: E731
+    up = prices(await client.call_tool("kh_search", {"query": "رژ لب", "sort": "cheapest"}))
+    assert up == sorted(up) and up[0] == 50
+    down = prices(await client.call_tool("kh_search", {"query": "رژ لب", "sort": "most_expensive"}))
+    assert down == sorted(down, reverse=True)
+
+
 async def test_kh_search_default_sort_is_omitted(client, api):
     api[PRODUCTS] = fixture("search.json")
     await client.call_tool("kh_search", {"query": "رژ لب"})
@@ -102,6 +117,7 @@ async def test_kh_find_cheapest(client, api):
     # only titles/brands containing every word, cheapest first
     assert [(o["id"], o["final_price"]) for o in out["offers"]] == [(86308, 65000), (86300, 65000)]
     assert out["scanned"] == 6 and out["total_matches"] == 541 and not out["complete"]
+    assert all(o["image"].startswith("https://") for o in out["offers"])
     assert api.params() == {
         "query": "کرم پالتا",
         "cat_id": "145",
@@ -150,6 +166,7 @@ async def test_kh_browse(client, api):
     out = (await client.call_tool("kh_browse", args)).structured_content
     assert out["total"] == 2064 and out["page"] == 1 and out["last_page"] == 207
     assert [p["id"] for p in out["products"]] == [106224, 116488, 116627, 116486]  # 72294 is sponsored
+    assert all(p["image"].startswith("https://") for p in out["products"])
     # no discount: price is the payable price (the site shows one number)
     assert out["products"][2]["final_price"] == out["products"][2]["price"] == 3979999
     sent = api.calls[-1].url.params
@@ -279,6 +296,7 @@ async def test_kh_deals(client, api):
         "price": 879500,
         "discount_pct": 50,
         "in_stock": True,
+        "image": "https://storage.khanoumi.com/ProductImages/75156-202551419237425.jpg",
         "url": "https://www.khanoumi.com/products/revival-mineral-clay-cleaniser-150ml-75156",
         "section": "جعبه صورتی",
     }

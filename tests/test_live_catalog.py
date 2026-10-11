@@ -14,6 +14,7 @@ async def test_kh_search(client):
     prices = [p["final_price"] for p in data["products"]]
     assert data["total"] > 100 and prices and prices == sorted(prices) and prices[0] > 0
     assert any(c["id"] == 145 for c in data["categories"]) and data["brands"]
+    assert all(p["image"].startswith("https://") for p in data["products"])
 
 
 async def test_kh_search_pages_neither_skip_nor_repeat(client):
@@ -30,6 +31,7 @@ async def test_kh_find_cheapest(client):
     prices = [o["final_price"] for o in data["offers"]]
     assert len(prices) == 10 and prices == sorted(prices) and prices[0] > 0
     assert all("شامپو" in o["title"] and o["in_stock"] for o in data["offers"])
+    assert all(o["image"].startswith("https://") for o in data["offers"])
 
 
 async def test_kh_browse(client):
@@ -44,6 +46,7 @@ async def test_kh_browse(client):
     data = await call(client, "kh_browse", args)
     prices = [p["final_price"] for p in data["products"]]
     assert data["total"] > 5 and prices == sorted(prices) and all(0 < p <= 1000000 for p in prices)
+    assert all(p["image"].startswith("https://") for p in data["products"])
 
 
 async def test_kh_filters(client):
@@ -68,3 +71,4 @@ async def test_kh_deals(client):
     pcts = [d["discount_pct"] for d in data["deals"]]
     assert pcts and pcts == sorted(pcts, reverse=True) and data["sections"]
     assert all(d["final_price"] <= d["price"] for d in data["deals"]) and "errors" not in data
+    assert all(d["image"].startswith("https://") for d in data["deals"])

@@ -28,7 +28,7 @@ Workflow:
 
 Conventions: all prices are Toman. final_price is what the customer pays, price is before discount,
 discount_pct is an int. A product's final_price is its cheapest shade: shades can differ, check the
-chosen one in kh_product variants. Ratings are 0-5, null when nobody has rated. Products are
+chosen one in kh_product variants. Ratings are 0-5, null when nobody has rated. image is a product picture URL (kh_product adds images, max 4). Products are
 identified by slug ('golden-rose-sheer-bright-lipstick-112222'); the numeric id at its end also
 works. Always pass the full slug from a reply: a made-up slug finds whichever product owns its
 trailing number. Sponsored items are removed from lists. Persian queries match best ('رژ لب',
