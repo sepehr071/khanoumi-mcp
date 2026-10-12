@@ -2,11 +2,11 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/sepehr071/khanoumi-mcp/main/.github/banner.png" alt="khanoumi-mcp: let your AI agent find the cheapest cosmetics and skin care on Khanoumi" width="100%">
+<img src="https://raw.githubusercontent.com/sepehr071/khanoumi-mcp/main/.github/banner.png" alt="khanoumi-mcp: unofficial Khanoumi MCP server for Claude, Cursor and Copilot" width="100%">
 
-# 💄 khanoumi-mcp
+# khanoumi-mcp: Khanoumi MCP server for AI agents 💄
 
-**Let your AI agent shop for cosmetics and skin care on Khanoumi.**<br>
+**Unofficial, read-only MCP server that lets your AI agent shop for cosmetics and skin care on Khanoumi (خانومی), an Iranian beauty store.**<br>
 Search makeup, skin and hair care and perfume, compare real prices and shades, filter by skin type,<br>
 read reviews and catch today's pink-box deals, all from Claude, Cursor or Copilot.
 
@@ -19,11 +19,23 @@ read reviews and catch today's pink-box deals, all from Claude, Cursor or Copilo
 [![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=khanoumi&config=eyJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJraGFub3VtaS1tY3AiXX0=)
 [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_khanoumi--mcp-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=khanoumi&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22khanoumi-mcp%22%5D%7D)
 
-[Quick start](#quick-start) · [What it can do](#what-it-can-do) · [Tools](#tools) · [FAQ](#faq) · [فارسی](#فارسی)
+[Quick start](#quick-start) · [For AI agents](#for-ai-agents) · [What it can do](#what-it-can-do) · [Tools](#tools) · [FAQ](#faq) · [فارسی](#فارسی)
 
 </div>
 
 ---
+
+## For AI agents
+
+- **What:** unofficial MCP server for Khanoumi (khanoumi.com, خانومی), an Iranian cosmetics and skin care shop. Queries work in Persian and English; prices are in Toman.
+- **Install:** `claude mcp add khanoumi -- uvx khanoumi-mcp` (stdio transport, needs [uv](https://docs.astral.sh/uv/getting-started/installation/) and Python 3.10+).
+- **Auth:** none. Optional `KHANOUMI_MCP_PROXY` sets an HTTP proxy for requests to khanoumi.com.
+- **Access:** read-only. No login, cart, orders or posted reviews, so no write tools exist.
+- **Tools:** 12, all prefixed `kh_`. Start with `kh_find_cheapest`, `kh_search`, `kh_product`, `kh_browse` or `kh_store_info`. Typical sequence: `kh_find_cheapest` → `kh_product` → `kh_reviews`.
+- **Use when:** comparing cosmetics, skin and hair care prices, shades, ingredients, reviews or today's deals on Khanoumi.
+- **Do not use when:** the user wants to buy something (no cart or checkout), or needs an exact shipping quote for an address (that needs a login on the site).
+- **Output:** compact JSON. `final_price` is what the buyer pays, `price` is before discount, `discount_pct` is a whole percent, ratings are 0-5 or `null`. Pass the product id or slug from search results to `kh_product`, `kh_reviews` and `kh_similar`; pass `category_id` from `kh_categories` or `kh_filters` to `kh_browse`.
+- **Machine-readable:** [`server.json`](server.json), and the catalog of all Iranian MCP servers at [awesome-iran-mcp](https://github.com/sepehr071/awesome-iran-mcp) ([TOOLS.md](https://github.com/sepehr071/awesome-iran-mcp/blob/main/TOOLS.md), [servers.json](https://github.com/sepehr071/awesome-iran-mcp/blob/main/servers.json), [llms.txt](https://github.com/sepehr071/awesome-iran-mcp/blob/main/llms.txt)).
 
 ## Why
 
@@ -218,6 +230,27 @@ Use the full path to `uvx` (`where uvx` on Windows, `which uvx` on macOS/Linux) 
 </details>
 
 <details>
+<summary><b>Is there a Khanoumi API or MCP server for AI agents?</b></summary>
+
+Khanoumi doesn't publish an official API for agents. `khanoumi-mcp` is an unofficial MCP server that wraps the public
+endpoints of khanoumi.com as 12 read-only tools, so any MCP client can search and compare products.
+</details>
+
+<details>
+<summary><b>How do I use Khanoumi with Claude, Cursor or Copilot?</b></summary>
+
+Install the server once (see [Quick start](#quick-start)), then ask in plain language, in Persian or English. In Claude Code
+the install is `claude mcp add khanoumi -- uvx khanoumi-mcp`.
+</details>
+
+<details>
+<summary><b>Is it official, safe and free?</b></summary>
+
+It is unofficial and free (MIT). It is read-only, needs no account or API key, and runs on your machine with no
+hosted server in between.
+</details>
+
+<details>
 <summary><b>How do I debug what the agent sees?</b></summary>
 
 ```bash
@@ -231,11 +264,13 @@ npx @modelcontextprotocol/inspector uvx khanoumi-mcp
 |---|---|---|
 | `KHANOUMI_MCP_PROXY` | unset | HTTP proxy for every request, e.g. `http://user:pass@host:port` |
 
-## فارسی
+<a id="فارسی"></a>
+
+## فارسی: سرور MCP خانومی
 
 <div dir="rtl">
 
-**khanoumi-mcp** به دستیار هوش مصنوعی شما (Claude، Cursor، Copilot و ...) اجازه می&zwnj;دهد در خانومی جستجو کند،
+**khanoumi-mcp** یک سرور MCP غیررسمی برای فروشگاه ایرانی خانومی است و به دستیار هوش مصنوعی شما (Claude، Cursor، Copilot و ...) اجازه می&zwnj;دهد در خانومی جستجو کند،
 ارزان&zwnj;ترین محصول موجود را پیدا کند، رنگ&zwnj;ها و قیمت هر رنگ را ببیند، بر اساس نوع پوست و مو فیلتر کند،
 نظرات خریداران را بخواند و تخفیف&zwnj;های جعبه صورتی و کد تخفیف روز را پیدا کند.
 
@@ -255,6 +290,8 @@ claude mcp add khanoumi -- uvx khanoumi-mcp
 
 بعد بپرسید: «ارزان&zwnj;ترین کرم آبرسان مناسب پوست چرب زیر ۵۰۰ هزار تومان کدام است و خریداران درباره&zwnj;اش چه می&zwnj;گویند؟»
 
+برای جستجو کافی است محصول یا برند را به فارسی یا انگلیسی بنویسید، مثلاً «ارزان&zwnj;ترین ضد آفتاب سینره» یا «cerave».
+
 </div>
 
 ## Development
@@ -272,6 +309,14 @@ docstring that tells the agent when to use it. Issues and PRs are welcome, espec
 
 Releases: bump the version in `pyproject.toml` and `server.json`, then push a `v*` tag. GitHub Actions tests,
 publishes to PyPI and the [MCP Registry](https://registry.modelcontextprotocol.io), and creates the GitHub Release.
+
+## Related servers
+
+- [Asal Banoo MCP server](https://github.com/sepehr071/asalbanoo-mcp) for cosmetics and skin care prices
+- [Shopino MCP server](https://github.com/sepehr071/shopino-mcp) for fashion across thousands of Iranian shops
+- All Iranian MCP servers: [awesome-iran-mcp](https://github.com/sepehr071/awesome-iran-mcp)
+
+If this saves you clicks, a star helps others find it.
 
 ## Disclaimer
 
