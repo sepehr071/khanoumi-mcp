@@ -4,6 +4,8 @@ from pathlib import Path
 import httpx
 import pytest
 
+from khanoumi_mcp import http
+
 pytestmark = pytest.mark.anyio
 
 BRANDS = "/api/ntl/v1/catalog/brands"
@@ -99,3 +101,52 @@ async def test_cookies_are_kept_between_calls(client, api):
     await client.call_tool("kh_brands", {"query": "a"})
     assert "x-nusi=abc" in api.calls[1].headers.get("cookie", "")
     assert "Chrome" in api.calls[0].headers["User-Agent"]
+
+
+async def test_ttl_cache_serves_repeat_calls(api):
+    api["/api/x"] = {"isSuccess": True, "data": {"n": 1}}
+    assert await http.api("/api/x", ttl=60) == {"n": 1}
+    assert await http.api("/api/x", ttl=60) == {"n": 1}
+    assert len(api.calls) == 1
+    await http.api("/api/x")  # ttl 0 always fetches
+    assert len(api.calls) == 2
+
+
+async def test_ttl_cache_is_keyed_on_params_and_capped(api):
+    api["/api/x"] = {"isSuccess": True, "data": {"n": 1}}
+    await http.api("/api/x", {"q": "a"}, ttl=60)
+    await http.api("/api/x", {"q": "b"}, ttl=60)
+    assert len(api.calls) == 2
+    for i in range(http.CACHE_MAX + 5):
+        await http.api("/api/x", {"q": i}, ttl=60)
+    assert len(http._cache) == http.CACHE_MAX
+
+
+@pytest.mark.parametrize("status", [429, 503])
+async def test_busy_site_is_retried_once(client, api, status):
+    replies = [httpx.Response(status, headers={"retry-after": "0"}), httpx.Response(200, json=EMPTY)]
+    api[BRANDS] = lambda r: replies.pop(0)
+    result = await client.call_tool("kh_brands", {})
+    assert not result.is_error and len(api.calls) == 2
+
+
+async def test_redirect_off_site_is_refused(client, api):
+    api[BRANDS] = lambda r: httpx.Response(302, headers={"location": "https://evil.example/x"})
+    result = await client.call_tool("kh_brands", {})
+    assert result.is_error and "only www.khanoumi.com" in result.content[0].text
+
+
+async def test_raw_mcp_reply_is_one_text_block_without_schemas(api):
+    from mcp import Client
+    from mcp.types import TextContent
+
+    from khanoumi_mcp.server import mcp
+
+    api[BRANDS] = EMPTY
+    async with Client(mcp) as raw:  # no conftest patch: what a real client receives
+        tools = (await raw.list_tools()).tools
+        assert all(t.output_schema is None for t in tools)
+        assert not any("title" in p for t in tools for p in t.input_schema.get("properties", {}).values())
+        result = await raw.call_tool("kh_brands", {})
+    assert len(result.content) == 1 and isinstance(result.content[0], TextContent)
+    assert result.structured_content is None and "\n" not in result.content[0].text

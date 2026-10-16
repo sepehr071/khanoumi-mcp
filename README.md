@@ -168,7 +168,7 @@ There's no hosted server in between, no API key, and nothing about you is sent a
 | Tool | What it does |
 |---|---|
 | `kh_product` | Price, discount, every shade / size / seller with its own price and stock, rating, attributes, description |
-| `kh_reviews` | Customer comments, newest first, with verified-buyer flag and photos |
+| `kh_reviews` | Customer comments, newest first, with verified-buyer flag and photos (text cut to 400 characters; `full_text=true` for all) |
 | `kh_similar` | Alternatives to a product, or the products the shop pairs with it |
 </details>
 
@@ -177,7 +177,7 @@ There's no hosted server in between, no API key, and nothing about you is sent a
 
 | Tool | What it does |
 |---|---|
-| `kh_store_info` | Packaging cost, shipping fees and times, returns, payment and guarantee rules from the FAQ |
+| `kh_store_info` | Packaging cost, shipping fees and times, returns, payment and guarantee rules from the FAQ (`topic=all` clips answers to 300 characters; `full_text=true` for all) |
 | `kh_blog_search` | Buying guides, routines and ingredient explainers from the Khanoumi magazine |
 </details>
 

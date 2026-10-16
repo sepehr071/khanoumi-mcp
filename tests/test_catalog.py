@@ -96,6 +96,8 @@ async def test_kh_search_price_sort_ignores_relevance_tiers(client, api):
     prices = lambda out: [p["final_price"] for p in out.structured_content["products"]]  # noqa: E731
     up = prices(await client.call_tool("kh_search", {"query": "رژ لب", "sort": "cheapest"}))
     assert up == sorted(up) and up[0] == 50
+    await client.call_tool("kh_search", {"query": "رژ لب", "sort": "cheapest", "page": 2})
+    assert len(api.calls) == 1  # paging re-reads the cached 300
     down = prices(await client.call_tool("kh_search", {"query": "رژ لب", "sort": "most_expensive"}))
     assert down == sorted(down, reverse=True)
 
@@ -264,7 +266,7 @@ async def test_kh_brands(client, api):
             {"slug": "simple", "name": "سیمپل", "name_en": "Simple", "url": "https://www.khanoumi.com/brands/simple"}
         ],
     }
-    assert api.params() == {"query": "سیمپل", "page_number": "1", "page_size": "50"}
+    assert api.params() == {"query": "سیمپل", "page_number": "1", "page_size": "30"}
 
 
 async def test_kh_deals(client, api):
@@ -281,9 +283,9 @@ async def test_kh_deals(client, api):
     assert out["sections"][0] == {
         "title": "جعبه صورتی",
         "pink_box": True,
-        "tag": "festival-js",
-        "link": "https://www.khanoumi.com/tags/festival-js",
+        "tag": "festival-js",  # the link is rebuilt from the tag, so it is left out
     }
+    assert "link" not in out["sections"][0]
     assert out["count"] == 18 and len(out["deals"]) == 5
     pcts = [d["discount_pct"] for d in out["deals"]]
     assert pcts == sorted(pcts, reverse=True)
@@ -307,7 +309,7 @@ async def test_kh_deals_without_popup(client, api):
     api["/api/cml/v1/pages"] = fixture("home.json")
     api["/api/cml/v1/pop-up-elements"] = lambda r: httpx.Response(204)  # nothing running
     out = (await client.call_tool("kh_deals", {})).structured_content
-    assert out["voucher"] is None and "errors" not in out and out["deals"]
+    assert out["voucher"] is None and "errors" not in out and len(out["deals"]) == 10  # default limit
     api["/api/cml/v1/pop-up-elements"] = lambda r: httpx.Response(500)
     out = (await client.call_tool("kh_deals", {})).structured_content
     assert out["voucher"] is None and "HTTP 500" in out["errors"][0] and out["deals"]

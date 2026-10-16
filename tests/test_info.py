@@ -24,6 +24,9 @@ async def test_kh_store_info_delivery(client, store):
 async def test_kh_store_info_topics_and_query(client, store):
     out = (await client.call_tool("kh_store_info", {"topic": "all"})).structured_content
     assert {x["section"] for x in out["faq"]} == {"ضمانت خانومی", "ارسال و تحویل کالا"} and len(out["faq"]) == 22
+    assert max(len(x["answer"]) for x in out["faq"]) <= 301  # no topic, no query: answers are clipped
+    full = (await client.call_tool("kh_store_info", {"topic": "all", "full_text": True})).structured_content
+    assert max(len(x["answer"]) for x in full["faq"]) > 301 and len(full["faq"]) == 22
     out = (
         await client.call_tool("kh_store_info", {"topic": "guarantee", "query": "انقضای محصولات"})
     ).structured_content
@@ -51,6 +54,13 @@ async def test_kh_blog_search(client, api):
         "url": "https://www.khanoumi.com/blog/dry-shampoo/",
     }
     assert api.params() == {"s": "شامپو"}
+
+
+async def test_kh_blog_search_drops_off_site_links(client, api):
+    html = fixture("blog.html").replace("https://www.khanoumi.com/blog/dry-shampoo/", "javascript:alert(1)")
+    api["/blog/"] = html
+    out = (await client.call_tool("kh_blog_search", {"query": "شامپو"})).structured_content
+    assert len(out["posts"]) == 2 and all(p["url"].startswith("https://www.khanoumi.com/") for p in out["posts"])
 
 
 async def test_kh_blog_search_next_page(client, api):

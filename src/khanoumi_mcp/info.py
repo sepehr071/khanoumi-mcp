@@ -9,7 +9,7 @@ from typing import Annotated, Any, Literal
 from pydantic import Field
 
 from .catalog import _norm, _text
-from .http import BASE, ApiError, api, get_page
+from .http import BASE, CACHE_TTL, ApiError, api, get_page
 from .registry import tool
 
 # FAQ section titles on /faq, by topic.
@@ -44,7 +44,7 @@ async def kh_store_info(
             "gold",
         ],
         Field(
-            description="FAQ section: delivery (fees, times), returns, payment, guarantee (authenticity, expiry), order, pink_box, tracking, order_edit, comments, gold, or all (about 80 answers, long: prefer a topic or a query)."
+            description="FAQ section: delivery (fees, times), returns, payment, guarantee (authenticity, expiry), ...; all = about 80 answers, clipped."
         ),
     ] = "delivery",
     query: Annotated[
@@ -53,20 +53,25 @@ async def kh_store_info(
             min_length=2, max_length=60, description="Only questions or answers containing this, e.g. 'هزینه ارسال'."
         ),
     ] = None,
+    full_text: Annotated[bool, Field(description="Do not clip answers when topic is all.")] = False,
 ) -> dict[str, Any]:
-    """Get Khanoumi's order rules: packaging cost, shipping fees and times, returns, payment and refunds,
-    authenticity guarantee, pink-box rules, from the official FAQ.
+    """Get Khanoumi's order rules from the official FAQ: packaging cost, shipping fees and times, returns,
+    payment and refunds, authenticity guarantee, pink-box rules.
 
-    Use for "how much is shipping", "can I return it", "how do I pay", and to compute the true cost
-    of an order: sum(final_price x qty) + packaging_cost + shipping fee from the delivery answers
-    (Tehran / Alborz courier vs post to other provinces; 0 when an item's badges include FreeShipping).
+    Use for "how much is shipping", "can I return it", and the true order cost (formula in the server
+    instructions; the fees are in the delivery answers). With topic=all and no query, answers are
+    cut to 300 characters (end with …); pick a topic or a query, or set full_text=true, for full text.
     """
-    config, doc = await asyncio.gather(api("/api/ntl/v1/app/configurations"), get_page("/faq"))
+    config, doc = await asyncio.gather(
+        api("/api/ntl/v1/app/configurations", ttl=CACHE_TTL), get_page("/faq", ttl=CACHE_TTL)
+    )
     faq = _faq(doc)
     if not faq:
         raise ApiError("Could not read the FAQ page of khanoumi.com; the page layout may have changed.")
     if topic != "all":
         faq = [x for x in faq if x["section"] == TOPICS[topic]]
+    elif not query and not full_text:
+        faq = [{**x, "answer": x["answer"][:300] + "…" if len(x["answer"]) > 300 else x["answer"]} for x in faq]
     if query:
         q = _norm(query)
         faq = [x for x in faq if q in _norm(x["question"] + " " + x["answer"])]
@@ -92,18 +97,16 @@ async def kh_blog_search(
     ],
     page: Annotated[int, Field(ge=1, le=50, description="Page number, from 1 (20 posts per page).")] = 1,
 ) -> dict[str, Any]:
-    """Search the Khanoumi magazine (مجله خانومی): buying guides, skin and hair care routines, ingredient
-    explainers and how-tos, with links.
+    """Search the Khanoumi magazine (مجله خانومی): buying guides, care routines, ingredient explainers, with links.
 
-    Use when the user asks which product type suits them or how to use something: point them to
-    the matching article, then find products with kh_search.
+    Use when the user asks what suits them or how to use something; then find products with kh_search.
     """
     path = f"/blog/page/{page}/" if page > 1 else "/blog/"
     doc = await get_page(path, {"s": query.strip()})
     posts = []
     for block in re.split(r'<li class="post-item', doc)[1:]:
         link = re.search(r'<h2 class="post-title"><a href="([^"]+)"[^>]*>(.*?)</a>', block, re.S)
-        if not link:
+        if not link or not link.group(1).startswith(BASE + "/"):  # scraped href: only on-site links
             continue
         cat = re.search(r'class="post-cat[^"]*">([^<]+)<', block)
         date = re.search(r'class="date meta-item[^"]*">([^<]+)<', block)

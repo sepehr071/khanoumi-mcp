@@ -1,3 +1,4 @@
+import httpx
 import pytest
 from conftest import fixture
 
@@ -93,6 +94,28 @@ async def test_kh_reviews(client, api):
         "likes": 0,
     }
     assert api.params() == {"page_number": "1", "page_size": "5"}
+
+
+async def test_kh_reviews_full_text(client, api):
+    long = "ب" * 500
+    api["/api/cml/v1/products/id/20200/comments"] = lambda r: httpx.Response(
+        200, json={"isSuccess": True, "data": {"totalCount": 1, "items": [{"description": long}]}}
+    )
+    clipped = (await client.call_tool("kh_reviews", {"product": "20200"})).structured_content
+    full = (await client.call_tool("kh_reviews", {"product": "20200", "full_text": True})).structured_content
+    assert clipped["reviews"][0]["text"] == long[:400] + "…"
+    assert full["reviews"][0]["text"] == long
+
+
+async def test_kh_product_full_text(client, api):
+    body = fixture("product_112222.json")
+    body["data"]["descriptionHtmlFa"] = "<p>" + "ب" * 2000 + "</p>"
+    body["data"]["howToUseHtml"] = "<p>" + "ج" * 1000 + "</p>"
+    api[f"/api/ntl/v1/products/slug/{LIPSTICK}"] = lambda r: httpx.Response(200, json=body)
+    clipped = (await client.call_tool("kh_product", {"product": LIPSTICK})).structured_content
+    full = (await client.call_tool("kh_product", {"product": LIPSTICK, "full_text": True})).structured_content
+    assert clipped["description"] == "ب" * 1500 + "…" and clipped["how_to_use"] == "ج" * 800 + "…"
+    assert full["description"] == "ب" * 2000 and full["how_to_use"] == "ج" * 1000
 
 
 async def test_kh_reviews_with_photos(client, api):

@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import time
 from typing import Any
 
 import httpx
@@ -23,10 +24,14 @@ HEADERS = {
 }
 
 MAX_CONCURRENCY = 4
+CACHE_TTL = 1200  # seconds, for the FAQ, app config and category tree
+CACHE_MAX = 64  # entries; the oldest go first
+RETRY_DELAY = 0.4  # seconds before the one retry (dropped connection, 429/502/503/504)
 
 _transport: httpx.AsyncBaseTransport | None = None
 _client: httpx.AsyncClient | None = None
 _limit: asyncio.Semaphore | None = None
+_cache: dict[tuple, tuple[float, Any]] = {}  # (url, params) -> (expiry, value); only for calls with ttl
 
 
 class ApiError(ToolError):
@@ -37,6 +42,12 @@ def set_transport(transport: httpx.AsyncBaseTransport | None) -> None:
     """Swap the transport (tests use httpx.MockTransport). Drops the current client."""
     global _transport, _client, _limit
     _transport, _client, _limit = transport, None, None
+    _cache.clear()
+
+
+async def _same_host(request: httpx.Request) -> None:
+    if request.url.host != "www.khanoumi.com":
+        raise ApiError(f"Refused a redirect to {request.url.host}: only www.khanoumi.com is allowed.")
 
 
 def _get_client() -> tuple[httpx.AsyncClient, asyncio.Semaphore]:
@@ -49,6 +60,7 @@ def _get_client() -> tuple[httpx.AsyncClient, asyncio.Semaphore]:
             headers=HEADERS,
             timeout=30,
             follow_redirects=True,
+            event_hooks={"request": [_same_host]},  # also runs on redirect hops: never leave the site with the cookies
             trust_env=False,
             proxy=os.environ.get("KHANOUMI_MCP_PROXY") or None,
         )
@@ -57,8 +69,29 @@ def _get_client() -> tuple[httpx.AsyncClient, asyncio.Semaphore]:
     return _client, _limit
 
 
-async def api(path: str, params: dict[str, Any] | None = None) -> Any:
-    """GET an API path (`/api/ntl/v1/products`, ...) and return the envelope's `data`; None for HTTP 204."""
+async def _cached(key: tuple, ttl: float, fetch) -> Any:
+    """Return fetch() memoised for ttl seconds (0 = no cache). Callers must not mutate the result."""
+    hit = _cache.get(key)
+    if ttl and hit and hit[0] > time.monotonic():
+        return hit[1]
+    value = await fetch()
+    if ttl:
+        while len(_cache) >= CACHE_MAX:
+            del _cache[next(iter(_cache))]
+        _cache[key] = (time.monotonic() + ttl, value)
+    return value
+
+
+async def api(path: str, params: dict[str, Any] | None = None, ttl: float = 0) -> Any:
+    """GET an API path (`/api/ntl/v1/products`, ...) and return the envelope's `data`; None for HTTP 204.
+
+    ttl > 0 caches the result that many seconds (only for slow-changing data).
+    """
+    key = (path, tuple(sorted((k, repr(v)) for k, v in (params or {}).items() if v is not None)))
+    return await _cached(key, ttl, lambda: _api(path, params))
+
+
+async def _api(path: str, params: dict[str, Any] | None) -> Any:
     r = await _send("GET", f"{BASE}{path}", params={k: v for k, v in (params or {}).items() if v is not None})
     if r.status_code == 204:  # banners and pop-ups: nothing running
         return None
@@ -71,18 +104,21 @@ async def api(path: str, params: dict[str, Any] | None = None) -> Any:
     return body.get("data")
 
 
-async def get_page(path: str, params: dict[str, Any] | None = None) -> str:
-    """GET a site page and return its HTML."""
-    return (await _send("GET", f"{BASE}{path}", params=params)).text
+async def get_page(path: str, params: dict[str, Any] | None = None, ttl: float = 0) -> str:
+    """GET a site page and return its HTML (ttl > 0 caches it that many seconds)."""
+
+    async def fetch() -> str:
+        return (await _send("GET", f"{BASE}{path}", params=params)).text
+
+    return await _cached((path, tuple(sorted((params or {}).items()))), ttl, fetch)
 
 
 async def _send(method: str, url: str, **kwargs: Any) -> httpx.Response:
     client, limit = _get_client()
-    for attempt in (1, 2):
+    for attempt in (1, 2):  # every call is a GET, so one retry is safe
         try:
             async with limit:
                 r = await client.request(method, url, **kwargs)
-            break
         except httpx.TimeoutException as e:
             raise ApiError("khanoumi.com did not answer in time. Try again in a moment.") from e
         except httpx.TransportError as e:
@@ -91,6 +127,13 @@ async def _send(method: str, url: str, **kwargs: Any) -> httpx.Response:
                     f"Could not reach khanoumi.com ({type(e).__name__}). Check the internet connection, "
                     "or set KHANOUMI_MCP_PROXY."
                 ) from e
+            await asyncio.sleep(RETRY_DELAY)
+            continue
+        if attempt == 1 and r.status_code in (429, 502, 503, 504):
+            retry_after = r.headers.get("retry-after", "")
+            await asyncio.sleep(min(int(retry_after), 5) if retry_after.isdigit() else RETRY_DELAY)
+            continue
+        break
     if r.status_code >= 400:
         detail = ""
         try:

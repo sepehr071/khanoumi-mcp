@@ -23,8 +23,9 @@ def anyio_backend():
 
 
 @pytest.fixture(autouse=True)
-def fresh_http_client():
+def fresh_http_client(monkeypatch):
     """The shared httpx client is bound to one event loop; each test gets a new loop."""
+    monkeypatch.setattr(http, "RETRY_DELAY", 0)
     http.set_transport(None)
     yield
     http.set_transport(None)
@@ -66,4 +67,13 @@ def api():
 @pytest.fixture
 async def client():
     async with Client(mcp, raise_exceptions=True) as c:
+        call_tool = c.call_tool
+
+        async def checked(*args, **kwargs):
+            result = await call_tool(*args, **kwargs)
+            if not result.is_error:  # tools return one compact JSON text block, no structuredContent
+                result.structured_content = json.loads(result.content[0].text)
+            return result
+
+        c.call_tool = checked
         yield c

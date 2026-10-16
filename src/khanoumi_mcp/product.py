@@ -15,21 +15,21 @@ ProductRef = Annotated[
     str,
     Field(
         pattern=r"^[A-Za-z0-9-]{0,200}\d$",
-        description="Product slug from kh_search / kh_browse (e.g. 'golden-rose-sheer-bright-lipstick-112222') "
-        "or the numeric product id (e.g. '112222').",
+        description="Slug from kh_search / kh_browse (e.g. 'golden-rose-sheer-bright-lipstick-112222') or numeric id.",
     ),
 ]
 
 
 @tool("Product details")
-async def kh_product(product: ProductRef) -> dict[str, Any]:
+async def kh_product(
+    product: ProductRef,
+    full_text: Annotated[bool, Field(description="Do not clip description and how_to_use.")] = False,
+) -> dict[str, Any]:
     """Get one product's full record: price and discount (Toman), every shade / size / seller variant with its
-    own price, stock and max quantity, rating, brand, category path, attributes (skin / hair type, key
-    ingredients, texture, country) and the description.
+    own price, stock and max quantity, rating, brand, categories, attributes and description.
 
-    Use after kh_search / kh_browse when the user picks a product, or to check that the shade they
-    want is in stock and what it costs. Reviews: kh_reviews. Alternatives: kh_similar.
-    Fees for the order total: kh_store_info.
+    Use after kh_search / kh_browse, or to check that a shade is in stock and its price. Next:
+    kh_reviews, kh_similar, kh_store_info (fees).
     """
     slug = await _slug(product)
     p = await api(f"/api/ntl/v1/products/slug/{slug}")
@@ -59,8 +59,8 @@ async def kh_product(product: ProductRef) -> dict[str, Any]:
         "attributes": {
             a.get("nameFa"): [v.get("nameFa") for v in a.get("values") or []] for a in p.get("attributes") or []
         },
-        "description": _clip(_text(p.get("descriptionHtmlFa")), 1500),
-        "how_to_use": _clip(_text(p.get("howToUseHtml")), 800),
+        "description": _clip(_text(p.get("descriptionHtmlFa")), None if full_text else 1500),
+        "how_to_use": _clip(_text(p.get("howToUseHtml")), None if full_text else 800),
         "image": p.get("mainImageUrl"),
         "images": [
             u for u in dict.fromkeys([p.get("mainImageUrl"), *(i.get("imageUrl") for i in p.get("images") or [])]) if u
@@ -74,12 +74,13 @@ async def kh_reviews(
     product: ProductRef,
     with_photos: Annotated[bool, Field(description="Only reviews that include customer photos.")] = False,
     page: Annotated[int, Field(ge=1, le=500, description="Page number, from 1, newest first.")] = 1,
-    limit: Annotated[int, Field(ge=1, le=100, description="Reviews per page.")] = 20,
+    limit: Annotated[int, Field(ge=1, le=100, description="Reviews per page.")] = 10,
+    full_text: Annotated[bool, Field(description="Do not cut review text to 400 characters.")] = False,
 ) -> dict[str, Any]:
     """Read customer comments on a product, newest first, with a verified-buyer flag and photos.
 
-    Use as a quality check before recommending a product. Comments carry no star rating: the
-    product's average rating and rating count are in kh_product.
+    Use as a quality check before recommending. Text is cut to 400 characters (ends with …) unless
+    full_text=true. No star ratings per comment: the average is in kh_product.
     """
     product_id = re.search(r"(\d+)$", product).group(1)  # type: ignore[union-attr]  # the pattern ends in a digit
     data = await api(
@@ -96,7 +97,7 @@ async def kh_reviews(
                 "author": (c.get("userName") or "").strip() or None,
                 "buyer": bool(c.get("isBuyer")),
                 "date": (c.get("createdAt") or "")[:10] or None,
-                "text": (c.get("description") or "").strip(),
+                "text": _clip((c.get("description") or "").strip(), None if full_text else 400) or "",
                 "likes": c.get("likeCount") or 0,
                 **({"photos": c["imageUrls"]} if c.get("imageUrls") else {}),
             }
@@ -110,16 +111,13 @@ async def kh_similar(
     product: ProductRef,
     kind: Annotated[
         Literal["similar", "complementary"],
-        Field(
-            description="similar = alternatives to this product; complementary = products the shop pairs with it (routine)."
-        ),
+        Field(description="similar = alternatives; complementary = products the shop pairs with it (often empty)."),
     ] = "similar",
     in_stock_only: Annotated[bool, Field(description="Only products that can be ordered now.")] = False,
 ) -> dict[str, Any]:
     """List alternatives to a product (about 20) or the products the shop pairs with it, with prices and stock.
 
-    Use when a product is out of stock or too expensive, or to build a routine / bundle around it.
-    Complementary lists are empty for most products.
+    Use when a product is out of stock or too expensive, or to build a routine.
     """
     slug = await _slug(product)
     data = await api(f"/api/ntl/v1/products/slug/{slug}/{kind}")
@@ -172,5 +170,5 @@ def _variant(v: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
-def _clip(text: str, n: int) -> str | None:
-    return (text[:n] + "…" if len(text) > n else text) or None
+def _clip(text: str, n: int | None) -> str | None:
+    return (text[:n] + "…" if n and len(text) > n else text) or None
