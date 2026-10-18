@@ -219,8 +219,15 @@ Call `kh_filters` for the category (for example `category_id: 145`, moisturizers
 <details>
 <summary><b>I get "Could not reach khanoumi.com"</b></summary>
 
-The server retries a dropped connection once. If it still fails, check your internet connection. System proxy
+The server retries a dropped connection up to twice. If it still fails, check your internet connection. System proxy
 variables are ignored on purpose; set `KHANOUMI_MCP_PROXY` if you need a proxy.
+</details>
+
+<details>
+<summary><b>I get a bot-check (challenge) error</b></summary>
+
+Install the optional browser fallback: `pip install "khanoumi-mcp[browser]"` (or `uvx --from "khanoumi-mcp[browser]" khanoumi-mcp`),
+then run `patchright install chromium`. It opens the site once in a headless browser only when a bot-check page appears.
 </details>
 
 <details>
@@ -262,7 +269,7 @@ npx @modelcontextprotocol/inspector uvx khanoumi-mcp
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `KHANOUMI_MCP_PROXY` | unset | HTTP proxy for every request, e.g. `http://user:pass@host:port` |
+| `KHANOUMI_MCP_PROXY` | unset | HTTP proxy for every request, e.g. `http://user:pass@host:port`; a comma-separated list is used one at a time (next one after a block or connect error) |
 
 <a id="فارسی"></a>
 

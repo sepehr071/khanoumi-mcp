@@ -1,4 +1,6 @@
+import asyncio
 import re
+import sys
 from pathlib import Path
 
 import httpx
@@ -48,16 +50,16 @@ async def test_network_error_after_retry(client, api):
     api[BRANDS] = down
     result = await client.call_tool("kh_brands", {})
     assert result.is_error and "Could not reach khanoumi.com (ConnectError)" in result.content[0].text
-    assert len(api.calls) == 2
+    assert len(api.calls) == 3
 
 
-async def test_timeout_is_not_retried(client, api):
+async def test_timeout_is_retried_twice(client, api):
     def slow(request):
         raise httpx.ReadTimeout("timed out", request=request)
 
     api[BRANDS] = slow
     result = await client.call_tool("kh_brands", {})
-    assert result.is_error and "did not answer in time" in result.content[0].text and len(api.calls) == 1
+    assert result.is_error and "did not answer in time" in result.content[0].text and len(api.calls) == 3
 
 
 @pytest.mark.parametrize(
@@ -100,7 +102,9 @@ async def test_cookies_are_kept_between_calls(client, api):
     await client.call_tool("kh_brands", {})
     await client.call_tool("kh_brands", {"query": "a"})
     assert "x-nusi=abc" in api.calls[1].headers.get("cookie", "")
-    assert "Chrome" in api.calls[0].headers["User-Agent"]
+    assert "Chrome" not in api.calls[0].headers.get("User-Agent", "")  # the impersonated profile supplies it
+    h = api.calls[0].headers
+    assert h["Referer"] == "https://www.khanoumi.com/" and h["sec-fetch-mode"] == "cors" and "Origin" not in h
 
 
 async def test_ttl_cache_serves_repeat_calls(api):
@@ -150,3 +154,89 @@ async def test_raw_mcp_reply_is_one_text_block_without_schemas(api):
         result = await raw.call_tool("kh_brands", {})
     assert len(result.content) == 1 and isinstance(result.content[0], TextContent)
     assert result.structured_content is None and "\n" not in result.content[0].text
+
+
+def test_is_challenge():
+    html = {"content-type": "text/html"}
+    assert http._is_challenge(httpx.Response(403, text="<html>Just a moment...</html>", headers=html))
+    assert not http._is_challenge(httpx.Response(403, text="<html>Access Denied</html>", headers=html))
+    assert not http._is_challenge(httpx.Response(403, json={"isSuccess": False}))
+    assert not http._is_challenge(httpx.Response(200, text="<html></html>", headers=html))
+
+
+async def test_403_is_not_retried(client, api):
+    api[BRANDS] = lambda r: httpx.Response(403, json={"isSuccess": False})
+    assert (await client.call_tool("kh_brands", {})).is_error and len(api.calls) == 1
+
+
+async def test_proxy_list_rotates_on_connect_error(monkeypatch, api):
+    monkeypatch.setenv("KHANOUMI_MCP_PROXY", "http://p1:1, http://p2:2")
+    assert http._proxies() == ["http://p1:1", "http://p2:2"]
+
+    def boom(request):
+        raise httpx.ConnectError("down", request=request)
+
+    api[BRANDS] = boom
+    http._get_client()
+    with pytest.raises(http.ApiError):
+        await http._once("GET", http.BASE + BRANDS)
+    assert http._proxy_index == 1 and http._client is None  # rebuilt with the next proxy on the next call
+
+
+async def test_stale_client_does_not_rotate(monkeypatch, api):
+    monkeypatch.setenv("KHANOUMI_MCP_PROXY", "http://p1:1, http://p2:2")
+    old, _ = http._get_client()
+    http._next_proxy(old)
+    new, _ = http._get_client()
+    assert http._proxy_index == 1 and new is not old
+    http._next_proxy(old)  # a late failure on the retired client must not skip the proxy now in use
+    assert http._proxy_index == 1 and http._client is new
+
+
+async def test_challenge_cleared_by_browser_once(monkeypatch, api):
+    runs = []
+
+    async def fake_browser(proxy):
+        runs.append(proxy)
+        await asyncio.sleep(0.01)
+        return [{"name": "clearance", "value": "ok", "domain": "www.khanoumi.com", "path": "/"}]
+
+    monkeypatch.setattr(http, "_browser_cookies", fake_browser)
+
+    def guarded(request):
+        if "clearance=ok" not in request.headers.get("cookie", ""):
+            return httpx.Response(403, text="<html>Just a moment</html>", headers={"content-type": "text/html"})
+        return httpx.Response(200, json=EMPTY)
+
+    api[BRANDS] = guarded
+    await asyncio.gather(http.api(BRANDS, {"a": 1}), http.api(BRANDS, {"a": 2}))
+    assert len(runs) == 1  # the second caller reused the cookies the first one fetched
+
+
+async def test_challenge_without_patchright(monkeypatch, api):
+    monkeypatch.setitem(sys.modules, "patchright.async_api", None)  # makes the import fail
+    api[BRANDS] = lambda r: httpx.Response(403, text="<html>Just a moment</html>")
+    with pytest.raises(http.ApiError, match=r"khanoumi-mcp\[browser\].*patchright install chromium"):
+        await http.api(BRANDS)
+
+
+async def test_retry_after_is_honoured_and_capped(monkeypatch, api):
+    waits = []
+
+    async def fake_sleep(s):
+        waits.append(s)
+
+    monkeypatch.setattr(http.asyncio, "sleep", fake_sleep)
+    replies = [
+        httpx.Response(429, headers={"Retry-After": "3"}),
+        httpx.Response(503, headers={"Retry-After": "999"}),
+        httpx.Response(200, json=EMPTY),
+    ]
+    api[BRANDS] = lambda r: replies.pop(0)
+    await http.api(BRANDS)
+    assert [w for w in waits if w] == [3, http.MAX_RETRY_WAIT]
+    api[BRANDS] = lambda r: httpx.Response(429)
+    api.calls.clear()
+    with pytest.raises(http.ApiError):
+        await http.api(BRANDS)
+    assert len(api.calls) == 3  # gives up after MAX_RETRIES
