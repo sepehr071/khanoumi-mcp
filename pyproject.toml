@@ -35,6 +35,7 @@ Homepage = "https://github.com/sepehr071/khanoumi-mcp"
 Source = "https://github.com/sepehr071/khanoumi-mcp"
 Changelog = "https://github.com/sepehr071/khanoumi-mcp/releases"
 Issues = "https://github.com/sepehr071/khanoumi-mcp/issues"
+Website = "https://mcpfarsi.ir/servers/khanoumi/"
 
 [project.scripts]
 khanoumi-mcp = "khanoumi_mcp.server:main"
