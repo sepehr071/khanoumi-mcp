@@ -20,34 +20,34 @@ Query = Annotated[
     Field(
         min_length=2,
         max_length=100,
-        description="Product name or keyword, Persian or English, e.g. 'کرم مرطوب کننده' or 'cerave'.",
+        description="Persian or English keyword, e.g. 'کرم مرطوب کننده', 'cerave'.",
     ),
 ]
 CategoryId = Annotated[
     int | None,
-    Field(ge=1, le=1_000_000, description="Category id from kh_categories or kh_search, e.g. 145 (moisturizers)."),
+    Field(ge=1, le=1_000_000, description="Id from kh_categories / kh_search, e.g. 145."),
 ]
 Slug = Annotated[str, Field(pattern=r"^[A-Za-z0-9._-]{1,80}$")]
 Brands = Annotated[
     list[Slug] | None,
-    Field(max_length=10, description="Brand slugs from kh_brands / kh_filters (OR), e.g. ['simple', 'cerave']."),
+    Field(max_length=10, description="Slugs from kh_brands / kh_filters (OR), e.g. ['simple']."),
 ]
 TagSlug = Annotated[
     str | None,
     Field(
         pattern=r"^[A-Za-z0-9._-]{1,80}$",
-        description="Campaign tag slug from kh_deals, e.g. 'festival-js' (pink box).",
+        description="Tag slug from kh_deals, e.g. 'festival-js'.",
     ),
 ]
-MinPrice = Annotated[int | None, Field(ge=0, description="Minimum payable price in Toman, e.g. 500000.")]
-MaxPrice = Annotated[int | None, Field(ge=1, description="Maximum payable price in Toman, e.g. 1500000.")]
-InStock = Annotated[bool, Field(description="Only products that can be ordered now.")]
-Page = Annotated[int, Field(ge=1, le=200, description="Page number, from 1.")]
+MinPrice = Annotated[int | None, Field(ge=0, description="Min payable price, Toman.")]
+MaxPrice = Annotated[int | None, Field(ge=1, description="Max payable price, Toman.")]
+InStock = Annotated[bool, Field(description="Only orderable products.")]
+Page = Annotated[int, Field(ge=1, le=200, description="From 1.")]
 
 SORTS = {"popular": None, "cheapest": "Cheapest", "most_expensive": "MostExpensive", "newest": "Newest"}
 Sort = Annotated[
     Literal["popular", "cheapest", "most_expensive", "newest"],
-    Field(description="popular = site default; cheapest / most_expensive by payable price."),
+    Field(description="By payable price for cheapest / most_expensive."),
 ]
 
 
@@ -61,13 +61,12 @@ async def kh_search(
     page: Page = 1,
     limit: Annotated[
         int,
-        Field(ge=1, le=60, description="Products per page (sponsored items are left out)."),
+        Field(ge=1, le=60, description="Products per page."),
     ] = 20,
 ) -> dict[str, Any]:
-    """Search products by keyword: price, discount and stock of each match. Also returns the best-matching
-    categories (ids for kh_browse) and brands (slugs).
+    """Search products by keyword: price, discount and stock of each match, plus matching category ids and brand slugs.
 
-    Use first for "price of X". Next: kh_find_cheapest, kh_filters + kh_browse, kh_product.
+    Use first for "price of X". Next: kh_find_cheapest, kh_browse, kh_product.
     """
     _check_range(min_price, max_price)
     filters: dict[str, Any] = dict(
@@ -114,8 +113,7 @@ async def kh_find_cheapest(
 ) -> dict[str, Any]:
     """Find the cheapest in-stock products for a keyword, one flat list by payable price (Toman).
 
-    Use for the lowest price of X. Drops loose matches whose title lacks a query word (match_all_words).
-    Narrow with category_id. complete=false: matches go on past `scanned`, raise scan. Next: kh_product.
+    complete=false: matches go on past `scanned`, raise scan. Next: kh_product.
     """
     words = _norm(query).split()
     offers: list[dict[str, Any]] = []
@@ -170,13 +168,11 @@ async def kh_browse(
         ),
     ] = None,
     page: Page = 1,
-    limit: Annotated[int, Field(ge=1, le=60, description="Products per page (sponsored items are left out).")] = 24,
+    limit: Annotated[int, Field(ge=1, le=60, description="Products per page.")] = 24,
 ) -> dict[str, Any]:
     """List products of a category, brand(s) or campaign tag with sorting, price range and filters.
 
-    Use for "sunscreens for oily skin under 800,000 Toman". Pass at least one of category_id
-    (kh_categories), brands (kh_brands) or tag (kh_deals); filter ids come from kh_filters. No rating
-    or discount sort. Next: kh_product / kh_reviews.
+    Pass at least one of category_id, brands or tag; filter ids come from kh_filters. Next: kh_product.
     """
     if category_id is None and not brands and tag is None:
         raise ApiError("Pass at least one of category_id, brands or tag.")
@@ -218,11 +214,10 @@ async def kh_filters(
     ] = None,
 ) -> dict[str, Any]:
     """List the filters of a category, brand, tag or search: sub-categories, brands, colors and attribute facets
-    (skin type, hair type, ingredients, ...) with ids and counts, plus price range and stock counts.
+    (skin type, ingredients, ...) with ids and counts, plus price range and stock counts.
 
-    Use before kh_browse: pass brand slugs as brands, color ids as colors, facet keys as facets.
-    Brands are cut to 40 and each group to 25 values (`omitted` = how many more); pass `group` to see
-    one in full. price_range is on the list price before discount (min 0 = out-of-stock items).
+    Use before kh_browse (brands, colors, facets). Brands are cut to 40 and each group to 25 values
+    (`omitted` = more); pass `group` for one in full. price_range is list price (min 0 = out-of-stock).
     """
     if category_id is None and not brands and tag is None and query is None:
         raise ApiError("Pass at least one of category_id, brands, tag or query.")
@@ -279,8 +274,7 @@ async def kh_categories(
 ) -> dict[str, Any]:
     """List Khanoumi's category tree with ids, URL paths and product counts.
 
-    Use to get a category_id for kh_browse / kh_filters / kh_find_cheapest. A query searches every
-    level; without one only levels up to max_level are listed.
+    Use to get a category_id. A query searches every level; without one, levels up to max_level.
     """
     data = await _list(page=1, limit=1, ttl=CACHE_TTL)
     categories = _flat_categories((data.get("facets") or {}).get("categories") or [])
@@ -327,11 +321,9 @@ async def kh_deals(
     limit: Annotated[int, Field(ge=1, le=100, description="Max deals to return.")] = 10,
 ) -> dict[str, Any]:
     """List today's home-page deals (daily pink box "جعبه صورتی" and other rows), biggest discount first,
-    plus the public discount code of the current pop-up campaign.
+    plus the public discount code of the pop-up campaign.
 
-    Use for "what's on sale". pink_box_ends_in_seconds = time left in the daily box. A section's
-    `tag` lists all its products via kh_browse(tag=...); a section without a tag has only `link`.
-    Voucher conditions are in voucher.text.
+    A section's `tag` lists all its products via kh_browse(tag=...); without a tag it has only `link`.
     """
     errors: list[str] = []
     home, popup = await asyncio.gather(

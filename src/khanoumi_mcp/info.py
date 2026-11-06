@@ -43,24 +43,19 @@ async def kh_store_info(
             "comments",
             "gold",
         ],
-        Field(
-            description="FAQ section: delivery (fees, times), returns, payment, guarantee (authenticity, expiry), ...; all = about 80 answers, clipped."
-        ),
+        Field(description="FAQ section; all = about 80 answers, clipped."),
     ] = "delivery",
     query: Annotated[
         str | None,
-        Field(
-            min_length=2, max_length=60, description="Only questions or answers containing this, e.g. 'هزینه ارسال'."
-        ),
+        Field(min_length=2, max_length=60, description="Only Q&A containing this, e.g. 'هزینه ارسال'."),
     ] = None,
     full_text: Annotated[bool, Field(description="Do not clip answers when topic is all.")] = False,
 ) -> dict[str, Any]:
     """Get Khanoumi's order rules from the official FAQ: packaging cost, shipping fees and times, returns,
     payment and refunds, authenticity guarantee, pink-box rules.
 
-    Use for "how much is shipping", "can I return it", and the true order cost (formula in the server
-    instructions; the fees are in the delivery answers). With topic=all and no query, answers are
-    cut to 300 characters (end with …); pick a topic or a query, or set full_text=true, for full text.
+    Fees for the true order cost are in the delivery answers. With topic=all and no query, answers are
+    cut to 300 characters; pick a topic or query, or set full_text=true.
     """
     config, doc = await asyncio.gather(
         api("/api/ntl/v1/app/configurations", ttl=CACHE_TTL), get_page("/faq", ttl=CACHE_TTL)
@@ -92,14 +87,14 @@ async def kh_blog_search(
         Field(
             min_length=2,
             max_length=80,
-            description="Topic, Persian works best, e.g. 'شامپو ریزش مو' or 'روتین پوست چرب'.",
+            description="Topic, Persian works best, e.g. 'شامپو ریزش مو'.",
         ),
     ],
-    page: Annotated[int, Field(ge=1, le=50, description="Page number, from 1 (20 posts per page).")] = 1,
+    page: Annotated[int, Field(ge=1, le=50, description="From 1 (20 posts per page).")] = 1,
 ) -> dict[str, Any]:
     """Search the Khanoumi magazine (مجله خانومی): buying guides, care routines, ingredient explainers, with links.
 
-    Use when the user asks what suits them or how to use something; then find products with kh_search.
+    Use for what suits the user or how to use something; then kh_search.
     """
     path = f"/blog/page/{page}/" if page > 1 else "/blog/"
     doc = await get_page(path, {"s": query.strip()})

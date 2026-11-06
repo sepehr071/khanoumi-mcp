@@ -15,7 +15,7 @@ ProductRef = Annotated[
     str,
     Field(
         pattern=r"^[A-Za-z0-9-]{0,200}\d$",
-        description="Slug from kh_search / kh_browse (e.g. 'golden-rose-sheer-bright-lipstick-112222') or numeric id.",
+        description="Slug from a list reply (e.g. 'golden-rose-sheer-bright-lipstick-112222') or numeric id.",
     ),
 ]
 
@@ -28,8 +28,7 @@ async def kh_product(
     """Get one product's full record: price and discount (Toman), every shade / size / seller variant with its
     own price, stock and max quantity, rating, brand, categories, attributes and description.
 
-    Use after kh_search / kh_browse, or to check that a shade is in stock and its price. Next:
-    kh_reviews, kh_similar, kh_store_info (fees).
+    Use to check a shade's stock and price. Next: kh_reviews, kh_similar.
     """
     slug = await _slug(product)
     p = await api(f"/api/ntl/v1/products/slug/{slug}")
@@ -73,14 +72,13 @@ async def kh_product(
 async def kh_reviews(
     product: ProductRef,
     with_photos: Annotated[bool, Field(description="Only reviews that include customer photos.")] = False,
-    page: Annotated[int, Field(ge=1, le=500, description="Page number, from 1, newest first.")] = 1,
+    page: Annotated[int, Field(ge=1, le=500, description="From 1, newest first.")] = 1,
     limit: Annotated[int, Field(ge=1, le=100, description="Reviews per page.")] = 10,
-    full_text: Annotated[bool, Field(description="Do not cut review text to 400 characters.")] = False,
+    full_text: Annotated[bool, Field(description="Do not cut text.")] = False,
 ) -> dict[str, Any]:
     """Read customer comments on a product, newest first, with a verified-buyer flag and photos.
 
-    Use as a quality check before recommending. Text is cut to 400 characters (ends with …) unless
-    full_text=true. No star ratings per comment: the average is in kh_product.
+    Text is cut to 400 characters unless full_text=true. No per-comment stars: the average is in kh_product.
     """
     product_id = re.search(r"(\d+)$", product).group(1)  # type: ignore[union-attr]  # the pattern ends in a digit
     data = await api(
@@ -111,13 +109,13 @@ async def kh_similar(
     product: ProductRef,
     kind: Annotated[
         Literal["similar", "complementary"],
-        Field(description="similar = alternatives; complementary = products the shop pairs with it (often empty)."),
+        Field(description="complementary = shop pairings (often empty)."),
     ] = "similar",
-    in_stock_only: Annotated[bool, Field(description="Only products that can be ordered now.")] = False,
+    in_stock_only: Annotated[bool, Field(description="Only orderable products.")] = False,
 ) -> dict[str, Any]:
     """List alternatives to a product (about 20) or the products the shop pairs with it, with prices and stock.
 
-    Use when a product is out of stock or too expensive, or to build a routine.
+    Use when a product is out of stock or too expensive.
     """
     slug = await _slug(product)
     data = await api(f"/api/ntl/v1/products/slug/{slug}/{kind}")
