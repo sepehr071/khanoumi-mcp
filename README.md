@@ -14,7 +14,7 @@ compare real prices and shades, filter by skin type, read reviews and catch toda
 [![Python](https://img.shields.io/pypi/pyversions/khanoumi-mcp)](https://pypi.org/project/khanoumi-mcp/)
 [![CI](https://github.com/sepehr071/khanoumi-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/sepehr071/khanoumi-mcp/actions/workflows/ci.yml)
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-io.github.sepehr071%2Fkhanoumi--mcp-7c3aed)](https://registry.modelcontextprotocol.io/?q=khanoumi-mcp)
-[![License: MIT](https://img.shields.io/badge/license-MIT-16a34a)](https://github.com/sepehr071/khanoumi-mcp/blob/main/LICENSE)
+[![License: PolyForm Noncommercial](https://img.shields.io/badge/license-PolyForm%20Noncommercial-c2410c)](https://github.com/sepehr071/khanoumi-mcp/blob/main/LICENSE)
 [![mcpfarsi](https://mcpfarsi.ir/badge/khanoumi.svg)](https://mcpfarsi.ir/servers/khanoumi/)
 
 [![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=khanoumi&config=eyJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJraGFub3VtaS1tY3AiXX0=)
@@ -263,7 +263,7 @@ the install is `claude mcp add khanoumi -- uvx khanoumi-mcp`.
 <details>
 <summary><b>Is it official, safe and free?</b></summary>
 
-It is unofficial and free (MIT). It is read-only, needs no account or API key, and runs on your machine with no
+It is unofficial and free for non-commercial use. It is read-only, needs no account or API key, and runs on your machine with no
 hosted server in between.
 </details>
 
@@ -413,8 +413,12 @@ khanoumi.com website, which can change without notice. Please keep request rates
 
 Built and maintained by **Sepehr Radmard** (سپهر رادمرد). Connect on [LinkedIn](https://www.linkedin.com/in/sepehr-radmard) or follow [@sepehr071 on GitHub](https://github.com/sepehr071) for more MCP servers for Iranian websites, all listed in [iran-mcp](https://github.com/sepehr071/iran-mcp). If this saves you time, a star on the repo helps other people find it.
 
-## License
+## مجوز استفاده (License)
 
-[MIT](https://github.com/sepehr071/khanoumi-mcp/blob/main/LICENSE)
+<a href="https://www.linkedin.com/in/sepehr-radmard"><img src="https://raw.githubusercontent.com/sepehr071/iran-mcp/main/assets/license-banner.png" alt="استفادهٔ شخصی و غیرتجاری رایگان است؛ برای استفادهٔ تجاری با سپهر رادمرد تماس بگیرید. Free for personal and non-commercial use; commercial use needs a license." width="100%"></a>
+
+**استفادهٔ شخصی و غیرتجاری رایگان است.** استفاده در شرکت، محصول پولی یا پروژهٔ مشتری به مجوز تجاری نیاز دارد؛ از راه [لینکدین](https://www.linkedin.com/in/sepehr-radmard) یا [گیت&zwnj;هاب](https://github.com/sepehr071) با سپهر رادمرد تماس بگیرید. متن کامل: [PolyForm Noncommercial 1.0.0](https://github.com/sepehr071/khanoumi-mcp/blob/main/LICENSE). نسخه&zwnj;های پیش از 0.4.1 با مجوز MIT منتشر شده&zwnj;اند و همان مجوز را دارند.
+
+Free for personal and non-commercial use under the [PolyForm Noncommercial License 1.0.0](https://github.com/sepehr071/khanoumi-mcp/blob/main/LICENSE). Using it in a company, a paid product or a client project needs a commercial license: contact Sepehr Radmard on [LinkedIn](https://www.linkedin.com/in/sepehr-radmard) or [GitHub](https://github.com/sepehr071). Versions before 0.4.1 were released under MIT and stay under it.
 
 If this saves you clicks, a star helps others find it.
