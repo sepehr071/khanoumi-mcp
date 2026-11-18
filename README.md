@@ -20,7 +20,7 @@ compare real prices and shades, filter by skin type, read reviews and catch toda
 [![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=khanoumi&config=eyJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJraGFub3VtaS1tY3AiXX0=)
 [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_khanoumi--mcp-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=khanoumi&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22khanoumi-mcp%22%5D%7D)
 
-[For AI agents](#for-ai-agents) · [Why](#why) · [What it can do](#what-it-can-do) · [Quick start](#quick-start) · [Tools](#tools) · [How it works](#how-it-works) · [Good to know](#good-to-know) · [FAQ](#faq) · [Configuration](#configuration) · [فارسی](#فارسی) · [Development](#development) · [Related](#related-servers)
+[For AI agents](#for-ai-agents) · [Why](#why) · [What it can do](#what-it-can-do) · [Quick start](#quick-start) · [Tools](#tools) · [Good to know](#good-to-know) · [FAQ](#faq) · [Configuration](#configuration) · [فارسی](#فارسی) · [Development](#development) · [Related](#related-servers)
 
 </div>
 
@@ -211,24 +211,6 @@ Products are identified by the slug of their page (for example `golden-rose-shee
 </details>
 
 All 12 tools are annotated `readOnlyHint: true` and return compact structured JSON, so they don't flood the agent's context.
-
-## How it works
-
-```text
-  AI agent  (Claude, Cursor, Copilot, ...)
-      │
-      │  MCP over stdio
-      ▼
-  khanoumi-mcp  (runs on your machine)
-      │
-      │  HTTPS
-      └──────▶  www.khanoumi.com   JSON API, FAQ page, blog
-```
-
-`khanoumi-mcp` runs locally and calls the same public endpoints the khanoumi.com website uses.
-There's no hosted server in between, no API key, and nothing about you is sent anywhere else.
-Requests go out through a Chrome-impersonating HTTP client, at most 2 at a time with a short random pause, and the
-client refuses to follow a redirect to any host other than www.khanoumi.com. Slow-changing answers (FAQ, category tree) are cached for 5 minutes.
 
 ## Good to know
 
